@@ -6,6 +6,7 @@
     "gatsby": "^2.19.5",
     "gatsby-plugin-remove-trailing-slashes": "^2.1.20",
     "gatsby-plugin-sass": "^2.1.27",
+    "gh-pages": "^2.2.0",
     "node-sass": "^4.13.1",
     "normalize.css": "^8.0.1",
     "prettier": "^1.19.1",
@@ -21,6 +22,7 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "start": "npm run develop",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "deploy": "gatsby build && gh-pages -d public -b master"
   }
 }
