@@ -5,7 +5,7 @@
   left: 16px;
   width: 24px;
   height: 20px;
-  transition: opacity .15s ease-in;
+  transition: opacity 100ms ease-in;
   opacity: 1;
 
   @media screen and (min-width: 32rem) {
@@ -26,7 +26,7 @@
 .bm-burger-bars {
   background: #333;
   opacity: 1;
-  transition: all .15s ease-in;
+  transition: all 100ms ease-in;
 }
 
 /* Color/shape of burger icon bars on hover*/
@@ -39,7 +39,7 @@
   height: 24px;
   width: 24px;
   opacity: 1;
-  transition: all .15s ease-in;
+  transition: all 100ms ease-in;
 
   &:hover {
     opacity: 0.5;

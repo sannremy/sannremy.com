@@ -8,19 +8,6 @@ class BurgerMenu extends React.Component {
     this.state = {
       menuOpen: false,
     }
-
-    this.links = [
-      React.createRef(),
-      React.createRef(),
-      React.createRef(),
-    ]
-  }
-
-  componentDidMount() {
-    console.log(links);
-    for (const link of links) {
-      console.log(link.to);
-    }
   }
 
   closeMenu() {
@@ -36,6 +23,20 @@ class BurgerMenu extends React.Component {
   }
 
   render() {
+    const baseClassName = "h-copy f5 no-underline ph4 pv2 db"
+    const isActive = ({
+      isCurrent
+    }) => {
+      return isCurrent ? { className: `${baseClassName} white bg-gray` } : null
+    }
+
+    const NavLink = props => (
+      <Link
+        getProps={isActive}
+        {...props}
+      />
+    )
+
     return (
       <Menu
         pageWrapId="page-wrap"
@@ -46,13 +47,28 @@ class BurgerMenu extends React.Component {
       >
         <ul className="list pl0 mv0">
           <li>
-            <Link ref={this.links[0]} onClick={() => this.closeMenu()} to="/" className="lh-copy f5 no-underline ph4 pv2 db dark-gray hover-white hover-bg-dark-gray">About</Link>
+            <NavLink
+              onClick={() => this.closeMenu()}
+              to="/"
+              className={`${baseClassName} dark-gray hover-white hover-bg-dark-gray`}>
+              About
+            </NavLink>
           </li>
           <li>
-            <Link ref={this.links[1]} onClick={() => this.closeMenu()} to="/resume/" className="lh-copy f5 no-underline ph4 pv2 db dark-gray hover-white hover-bg-dark-gray">Resume</Link>
+            <NavLink
+              onClick={() => this.closeMenu()}
+              to="/resume"
+              className={`${baseClassName} dark-gray hover-white hover-bg-dark-gray`}>
+              Resume
+            </NavLink>
           </li>
           <li>
-            <Link ref={this.links[2]} onClick={() => this.closeMenu()} to="/books/" className="lh-copy f5 no-underline ph4 pv2 db dark-gray hover-white hover-bg-dark-gray">Books</Link>
+            <NavLink
+              onClick={() => this.closeMenu()}
+              to="/books"
+              className={`${baseClassName} dark-gray hover-white hover-bg-dark-gray`}>
+              Books
+            </NavLink>
           </li>
         </ul>
       </Menu>

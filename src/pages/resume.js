@@ -6,28 +6,27 @@ const Resume = () => (
     <div className="center f6">
       <h1 className="ma0">Resume</h1>
       <p className="lh-copy">
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-        tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+        I am blabla
       </p>
     </div>
 
-    <header class="fn fl-ns w-50-ns pr4-ns dark-gray">
-      <h1 class="f4 mb3 mt0 lh-title">Experience</h1>
-      <time class="f7 ttu tracked gray">Jan Tschichold</time>
+    <h1 className="f4 mb3 mt0 lh-title">Experience</h1>
+
+    <header className="fn fl-ns w-50-ns pr4-ns dark-gray">
+      <time className="f7 ttu tracked gray">Jan Tschichold</time>
     </header>
-    <div class="fn fl-ns w-50-ns dark-gray">
-      <p class="lh-copy measure mt4 mt0-ns">
+    <div className="fn fl-ns w-50-ns dark-gray">
+      <p className="lh-copy mt2 mt0-ns">
         PERFECT typography is more a science than an art. Mastery of the trade is
         indispensable, but it isn't everything.
       </p>
     </div>
 
-    <header class="fn fl-ns w-50-ns pr4-ns dark-gray">
-      <h1 class="f4 mb3 mt0 lh-title">Education</h1>
-      <time class="f7 ttu tracked gray">Jan Tschichold</time>
+    <header className="fn fl-ns w-50-ns pr4-ns dark-gray">
+      <time className="f7 ttu tracked gray">Jan Tschichold</time>
     </header>
-    <div class="fn fl-ns w-50-ns dark-gray">
-      <p class="lh-copy measure mt4 mt0-ns">
+    <div className="fn fl-ns w-50-ns dark-gray">
+      <p className="lh-copy mt2 mt0-ns">
         PERFECT typography is more a science than an art. Mastery of the trade is
         indispensable, but it isn't everything.
       </p>
