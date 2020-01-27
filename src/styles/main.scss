@@ -1,0 +1,12 @@
+@import "~tachyons-sass/tachyons.scss";
+@import "variables";
+@import "burger-menu";
+
+body {
+  font-family: $fontStack;
+}
+
+svg.icon {
+  fill: rgba(0, 0, 0, 0.7);
+  height: 100%;
+}
