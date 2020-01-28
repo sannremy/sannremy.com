@@ -1,0 +1,30 @@
+name: resume
+meta:
+  title: Resume!
+page:
+  experience:
+    - company: kljlkj
+      role: ljklkj
+      description: kljlkj
+    - company: kljlkj
+      role: kljlkj
+      description: kljlkj
+  education:
+    - name: kljlkj
+      degree: kljlkj
+      description: kljlkj
+    - name: kljlkj
+      degree: kljlkj
+      description: kljlkj
+  skills:
+    - category: Programming
+      items:
+        - js
+        - php
+    - category: Programming2
+      items:
+        - js2
+        - php2
+  interests:
+    - name: Tennis
+    - icon: 1F3BE

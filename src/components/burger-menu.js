@@ -24,10 +24,19 @@ class BurgerMenu extends React.Component {
 
   render() {
     const baseClassName = "h-copy f5 no-underline ph4 pv2 db"
+
     const isActive = ({
-      isCurrent
+      href,
+      location,
     }) => {
-      return isCurrent ? { className: `${baseClassName} white bg-gray` } : null
+      // Remove slashes to compare
+      if (location.pathname.replace(/\//g, '') === href.replace(/\//g, '')) {
+        return {
+          className: `${baseClassName} white bg-gray`
+        }
+      }
+
+      return null
     }
 
     const NavLink = props => (
@@ -57,7 +66,7 @@ class BurgerMenu extends React.Component {
           <li>
             <NavLink
               onClick={() => this.closeMenu()}
-              to="/resume"
+              to="/resume/"
               className={`${baseClassName} dark-gray hover-white hover-bg-dark-gray`}>
               Resume
             </NavLink>
@@ -65,7 +74,7 @@ class BurgerMenu extends React.Component {
           <li>
             <NavLink
               onClick={() => this.closeMenu()}
-              to="/books"
+              to="/books/"
               className={`${baseClassName} dark-gray hover-white hover-bg-dark-gray`}>
               Books
             </NavLink>

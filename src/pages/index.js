@@ -1,6 +1,9 @@
 import React from "react"
+import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { AnimatedItem, AnimatedParent } from "../components/animation"
+import Tooltip from "../components/tooltip"
+import Meta from "../components/meta"
 
 class Index extends React.Component {
   constructor(props) {
@@ -17,49 +20,82 @@ class Index extends React.Component {
   }
 
   render() {
+    const {
+      layoutYaml,
+      indexYaml,
+    } = this.props.data
+
+    const {
+      meta,
+      page
+    } = indexYaml
+
+    const SocialItem = ({ name, icon, href }) => (
+      <a className="link dim db mw2 w-40 center" href={href}>
+        <Tooltip title={name}>
+          <svg
+            className="icon"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+            dangerouslySetInnerHTML={{ __html: icon }}
+          />
+        </Tooltip>
+      </a>
+    )
+
+    const SocialComponent = (
+      <ul className="dark-gray list pl0 pv4 tc">
+        {page.social.map((social, index) =>
+          (
+            <li key={"social-" + index} className="mw4 w-33 center dib">
+              <AnimatedItem>
+                <SocialItem {...social} />
+              </AnimatedItem>
+            </li>
+          )
+        )}
+      </ul>
+    )
+
     return (
-      <Layout>
+      <Layout name={layoutYaml.name} role={layoutYaml.name}>
+        <Meta
+          title={meta.title}
+          href="/"
+        />
         <AnimatedParent pose={this.state.isMounted ? 'open' : 'closed'}>
           <AnimatedItem>
-            <p className="lh-copy center f6 dark-gray ma0">
-            Currently working for Blizzard Entertainment. I mostly do full stack development: building UI, server code, infrastructure, database.
-            I speak English and French.
-            </p>
+            <p className="lh-copy center f6 dark-gray ma0">{page.description}</p>
           </AnimatedItem>
 
-          <ul className="dark-gray list pl0 pv4 tc">
-            <li className="mw4 w-33 center dib">
-              <AnimatedItem>
-                <a className="link dim db mw2 w-40 center" href="https://github.com/srchea">
-                  <svg className="icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <use xlinkHref="#github" x="0" y="0" />
-                  </svg>
-                </a>
-              </AnimatedItem>
-            </li>
-            <li className="mw4 w-33 center dib">
-              <AnimatedItem>
-                <a className="link dim db mw2 w-40 center" href="https://codepen.io/srchea">
-                  <svg className="icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <use xlinkHref="#codepen" x="0" y="0" />
-                  </svg>
-                </a>
-              </AnimatedItem>
-            </li>
-            <li className="mw4 w-33 center dib">
-              <AnimatedItem>
-                <a className="link dim db mw2 w-40 center" href="https://www.linkedin.com/in/srchea">
-                  <svg className="icon" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <use xlinkHref="#linkedin" x="0" y="0" />
-                  </svg>
-                </a>
-              </AnimatedItem>
-            </li>
-          </ul>
+          {SocialComponent}
         </AnimatedParent>
       </Layout>
     )
   }
 }
+
+export const query = graphql`
+{
+  layoutYaml {
+    name
+    role
+  }
+  indexYaml {
+    meta {
+      title
+    }
+    page {
+      description
+      social {
+        href
+        name
+        icon
+      }
+    }
+  }
+}
+`
 
 export default Index

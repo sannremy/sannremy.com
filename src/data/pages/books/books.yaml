@@ -1,0 +1,11 @@
+name: books
+meta:
+  title: Books!
+page:
+  books:
+    - title: WebSocket Essentials - Building Apps with HTML5 WebSockets
+      publisher: Packt Publishing
+      preview: https://books.google.fr/books?id=Zo39CAAAQBAJ&printsec=frontcover
+    - title: Getting Started with HTML5 WebSocket Programming
+      publisher: Packt Publishing
+      preview: https://books.google.fr/books?id=-1aBaguTz2MC&printsec=frontcover
