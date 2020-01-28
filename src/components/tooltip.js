@@ -8,6 +8,9 @@ const Tooltip = (props) => {
       arrow={true}
       duration={100}
       distance={32}
+      html={(
+        <span className="f6">{props.title}</span>
+      )}
     >
       {props.children}
     </Tippy>

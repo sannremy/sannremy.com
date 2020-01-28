@@ -1,7 +1,7 @@
-name: books
 meta:
   title: Books!
 page:
+  title: Books reviewed
   books:
     - title: WebSocket Essentials - Building Apps with HTML5 WebSockets
       publisher: Packt Publishing

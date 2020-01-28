@@ -59,10 +59,10 @@ class Index extends React.Component {
     )
 
     return (
-      <Layout name={layoutYaml.name} role={layoutYaml.name}>
+      <Layout {...layoutYaml}>
         <Meta
-          title={meta.title}
           href="/"
+          {...meta}
         />
         <AnimatedParent pose={this.state.isMounted ? 'open' : 'closed'}>
           <AnimatedItem>

@@ -23,7 +23,7 @@ class BurgerMenu extends React.Component {
   }
 
   render() {
-    const baseClassName = "h-copy f5 no-underline ph4 pv2 db"
+    const baseClassName = "link lh-copy f5 no-underline ph4 pv2 db"
 
     const isActive = ({
       href,
@@ -32,7 +32,7 @@ class BurgerMenu extends React.Component {
       // Remove slashes to compare
       if (location.pathname.replace(/\//g, '') === href.replace(/\//g, '')) {
         return {
-          className: `${baseClassName} white bg-gray`
+          className: `${baseClassName} fw6 bm-item-selected`
         }
       }
 
@@ -59,7 +59,7 @@ class BurgerMenu extends React.Component {
             <NavLink
               onClick={() => this.closeMenu()}
               to="/"
-              className={`${baseClassName} dark-gray hover-white hover-bg-dark-gray`}>
+              className={`${baseClassName} dark-gray bm-item-hover`}>
               About
             </NavLink>
           </li>
@@ -67,7 +67,7 @@ class BurgerMenu extends React.Component {
             <NavLink
               onClick={() => this.closeMenu()}
               to="/resume/"
-              className={`${baseClassName} dark-gray hover-white hover-bg-dark-gray`}>
+              className={`${baseClassName} dark-gray bm-item-hover`}>
               Resume
             </NavLink>
           </li>
@@ -75,7 +75,7 @@ class BurgerMenu extends React.Component {
             <NavLink
               onClick={() => this.closeMenu()}
               to="/books/"
-              className={`${baseClassName} dark-gray hover-white hover-bg-dark-gray`}>
+              className={`${baseClassName} dark-gray bm-item-hover`}>
               Books
             </NavLink>
           </li>

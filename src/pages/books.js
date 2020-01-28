@@ -56,15 +56,15 @@ class Books extends React.Component {
     )
 
     return (
-      <Layout name={layoutYaml.name} role={layoutYaml.name}>
+      <Layout {...layoutYaml}>
         {/* SVG icons */}
         <svg className="dn" role="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <g id="external-link" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></g>
         </svg>
 
         <Meta
-          title={meta.title}
           href="/books/"
+          {...meta}
         />
         <AnimatedParent pose={this.state.isMounted ? 'open' : 'closed'}>
           <div className="center f6">
@@ -91,6 +91,7 @@ export const query = graphql`
       title
     }
     page {
+      title
       books {
         title
         publisher

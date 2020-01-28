@@ -1,30 +1,51 @@
-name: resume
 meta:
   title: Resume!
 page:
+  title: Resume
+  description: Current situation - I am not looking for opportunities at the moment.
   experience:
-    - company: kljlkj
-      role: ljklkj
-      description: kljlkj
-    - company: kljlkj
-      role: kljlkj
-      description: kljlkj
+    title: Work experience
+    items:
+      - company: kljlkj
+        role: ljklkj
+        description: kljlkj
+      - company: kljlkj22
+        role: kljlkj
+        description: kljlkj
   education:
-    - name: kljlkj
-      degree: kljlkj
-      description: kljlkj
-    - name: kljlkj
-      degree: kljlkj
-      description: kljlkj
+    title: Education
+    items:
+      - name: kljlkj
+        degree: kljlkj
+        description: kljlkj
+      - name: kljlkj
+        degree: kljlkj
+        description: kljlkj
   skills:
-    - category: Programming
-      items:
-        - js
-        - php
-    - category: Programming2
-      items:
-        - js2
-        - php2
+    title: Skills
+    items:
+      - category: Programming
+        items:
+          - js
+          - php
+      - category: Programming2
+        items:
+          - js2
+          - php2
   interests:
-    - name: Tennis
-    - icon: 1F3BE
+    title: Interests
+    items:
+      - name: Tennis
+        icon: 1F3BE
+      - name: Cats
+        icon: 1F63B
+      - name: Gaming
+        icon: 1F3AE
+      - name: ComputerNerd
+        icon: 1F913
+      - name: RaspberryPi
+        icon: E1C9
+      - name: Programming
+        icon: E1C1
+      - name: FamilyTime
+        icon: 1F468-200D-1F469-200D-1F467-200D-1F466
