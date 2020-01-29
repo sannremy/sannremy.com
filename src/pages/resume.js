@@ -113,7 +113,7 @@ class Resume extends React.Component {
           href="/resume/"
           {...meta}
         />
-        <AnimatedParent pose={this.state.isMounted ? 'open' : 'closed'}>
+        <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
           <div className="mb4">
             <AnimatedItem>
               <h1 className="ma0">{page.title}</h1>

@@ -2,11 +2,9 @@ import posed from "react-pose"
 
 const AnimatedParent = posed.div({
   open: {
-    delayChildren: 50,
     staggerChildren: 100,
   },
-  closed: {},
-  initialPose: 'closed',
+  init: {},
 });
 
 const AnimatedItem = posed.div({
@@ -14,7 +12,7 @@ const AnimatedItem = posed.div({
     y: 0,
     opacity: 1,
   },
-  closed: {
+  init: {
     y: 20,
     opacity: 0,
   },

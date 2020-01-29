@@ -64,7 +64,7 @@ class Index extends React.Component {
           href="/"
           {...meta}
         />
-        <AnimatedParent pose={this.state.isMounted ? 'open' : 'closed'}>
+        <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
           <AnimatedItem>
             <p className="lh-copy center f6 dark-gray ma0">{page.description}</p>
           </AnimatedItem>

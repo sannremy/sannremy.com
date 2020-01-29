@@ -6,6 +6,7 @@ import BurgerMenu from "./burger-menu"
 import picture from "../assets/sann-remy-chea.jpg"
 
 import "../styles/main.scss"
+import { AnimatedParent, AnimatedItem } from "./animation"
 
 // const Counter = ({ count, increment }) => (
 //   <div>
@@ -30,6 +31,19 @@ import "../styles/main.scss"
 // const ConnectedCounter = connect(mapStateToProps, mapDispatchToProps)(Counter)
 
 class DefaultLayout extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isMounted: false
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      isMounted: true
+    });
+  }
+
   render() {
     return (
       <div id="outer-container">
@@ -40,14 +54,24 @@ class DefaultLayout extends React.Component {
         <main id="page-wrap" className="relative center mw6 bg-white f6 pa3">
           {/* Picture + Header */}
           <section>
-            <div className="tc pa4">
-              <Link to="/" className="no-underline dark-gray">
-                <img src={picture} className="border-box br-100 pa1 ba b--black-10 w4 mw-40 dib" alt="avatar"/>
-                <h1 className="f4">{this.props.name}</h1>
-              </Link>
-              <h2 className="f5 fw4 gray mt0">{this.props.role}</h2>
-              <hr className="mw3 ba b--black-10" />
-            </div>
+            <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
+              <div className="tc pa4">
+                <Link to="/" className="no-underline dark-gray">
+                  <AnimatedItem>
+                    <img src={picture} className="border-box br-100 pa1 ba b--black-10 w4 mw-40 dib" alt="avatar"/>
+                  </AnimatedItem>
+                  <AnimatedItem>
+                    <h1 className="f4">{this.props.name}</h1>
+                  </AnimatedItem>
+                </Link>
+                <AnimatedItem>
+                  <h2 className="f5 fw4 gray mt0">{this.props.role}</h2>
+                </AnimatedItem>
+                <AnimatedItem>
+                  <hr className="mw3 ba b--black-10" />
+                </AnimatedItem>
+              </div>
+            </AnimatedParent>
           </section>
 
           {/* Page content */}

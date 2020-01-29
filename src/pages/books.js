@@ -66,7 +66,7 @@ class Books extends React.Component {
           href="/books/"
           {...meta}
         />
-        <AnimatedParent pose={this.state.isMounted ? 'open' : 'closed'}>
+        <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
           <div className="center f6">
             <AnimatedItem>
               <h1 className="mt0 mb2">Books reviewed</h1>
