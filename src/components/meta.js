@@ -12,28 +12,95 @@ const Meta = (props) => {
   let keywords = props.keywords || [];
   keywords = baseKeywords.concat(keywords)
 
+  const title = props.title
   const description = props.description || ""
   const subject = props.subject || ""
   const href = props.href || "/"
+  const author = "Sann-Remy Chea"
 
   return (
-    <Helmet htmlAttributes={{
-      lang: "en"
-    }}>
-      <meta charSet="utf-8" />
-      <title>{props.title}</title>
-      <meta name="keywords" content={keywords.join(", ")} />
-      <meta name="description" content={description} />
-      <meta name="subject" content={subject} />
-      <meta name="language" content="en" />
-      <meta name="robots" content="index,follow" />
-      <meta name="revised" content="Tuesday, January 28th, 2020, 8:00 pm" />
-      <meta name="author" content="Sann-Remy Chea" />
-      <meta name="identifier-URL" content="https://src.onl" />
-      <meta name="revisit-after" content="14 days" />
-      <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="canonical" href={"https://src.onl" + href} />
-    </Helmet>
+    <Helmet
+      htmlAttributes={{
+        lang: "en"
+      }}
+      title={title}
+      titleTemplate={`%s - Sann-Remy Chea`}
+      meta={[
+        {
+          charSet: "utf-8",
+        },
+        {
+          name: "keywords",
+          content: keywords.join(", "),
+        },
+        {
+          name: "description",
+          content: description,
+        },
+        {
+          name: "subject",
+          content: subject,
+        },
+        {
+          name: "language",
+          content: "en",
+        },
+        {
+          name: "robots",
+          content: "index,follow",
+        },
+        {
+          name: "author",
+          content: author,
+        },
+        {
+          name: "identifier-URL",
+          content: "https://src.onl",
+        },
+        {
+          name: "revisit-after",
+          content: "14 days",
+        },
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1",
+        },
+        {
+          property: `og:title`,
+          content: title,
+        },
+        {
+          property: `og:description`,
+          content: description,
+        },
+        {
+          property: `og:type`,
+          content: `website`,
+        },
+        {
+          name: `twitter:card`,
+          content: `summary`,
+        },
+        {
+          name: `twitter:creator`,
+          content: author,
+        },
+        {
+          name: `twitter:title`,
+          content: title,
+        },
+        {
+          name: `twitter:description`,
+          content: description,
+        },
+      ]}
+      link={[
+        {
+          rel: "canonical",
+          href: "https://src.onl" + href,
+        },
+      ]}
+    />
   )
 }
 
