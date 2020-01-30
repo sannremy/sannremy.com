@@ -48,7 +48,7 @@ class Books extends PageBase {
           href="/books/"
           {...this.meta}
         />
-        <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
+        <AnimatedParent animate={this.state.isMounted ? 'open' : 'init'}>
           <div className="center f6">
             <AnimatedItem>
               <h1 className="mt0 mb2">Books reviewed</h1>

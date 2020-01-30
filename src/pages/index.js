@@ -69,7 +69,7 @@ class Index extends PageBase {
           href="/"
           {...this.meta}
         />
-        <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
+        <AnimatedParent animate={this.state.isMounted ? 'open' : 'init'}>
           {/* <ConnectedCounter /> */}
           <AnimatedItem>
             <p className="lh-copy center f6 dark-gray ma0">{this.page.description}</p>

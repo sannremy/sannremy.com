@@ -105,7 +105,7 @@ class Resume extends PageBase {
           href="/resume/"
           {...this.meta}
         />
-        <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
+        <AnimatedParent animate={this.state.isMounted ? 'open' : 'init'}>
           {/* Resume */}
           <section className="mb4 lh-copy">
             <AnimatedItem>
