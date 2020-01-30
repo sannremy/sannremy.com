@@ -27,7 +27,6 @@ module.exports = {
         precachePages: [
           `/`,
           `/resume/`,
-          `/books/`,
         ],
       },
     },

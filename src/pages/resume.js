@@ -73,6 +73,35 @@ class Resume extends PageBase {
       )
     })
 
+    const BookItem = ({ title, publisher, preview }) => (
+      <div className="flex-auto">
+        <h1 className="f6 fw6 lh-title mv0">{title}</h1>
+        <h2 className="f6 fw4 mt1 mb0 gray">{publisher}</h2>
+        <a className="no-underline link dim inline-flex items-center tc h1 mt2 mb0 dark-gray" href={preview} rel="nofollow">
+          <span className="f6">Preview</span>
+          <svg className="dib icon pl1" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <use xlinkHref="#external-link" x="0" y="0" />
+          </svg>
+        </a>
+      </div>
+    )
+
+    const Books = (
+      <ul className="list pl0 mt0 center">
+        {this.page.misc.books.items.map((book, index) => {
+          return (
+            <li key={"book-" + index} className={"flex items-center lh-copy pa0 mt3"}>
+              <AnimatedItem>
+                <div className={(index + 1 === this.page.misc.books.items.length ? "" : "pb3 bb b--black-10")}>
+                  <BookItem {...book} />
+                </div>
+              </AnimatedItem>
+            </li>
+          )
+        })}
+      </ul>
+    )
+
     const InterestIcon = (props) => {
       const emoji = require("../assets/openmoji-svg-color/" + props.icon + ".svg")
       const name = "#" + props.name
@@ -87,7 +116,7 @@ class Resume extends PageBase {
 
     const Interests = (
       <ul className="list pa0 ma0 center">
-        {this.page.interests.items.map((interest, index) => {
+        {this.page.misc.interests.items.map((interest, index) => {
           return (
             <li key={'interest-' + index} className="dib mr2 mb2">
               <AnimatedItem>
@@ -104,6 +133,12 @@ class Resume extends PageBase {
         <Meta
           {...this.meta}
         />
+
+        {/* SVG icons */}
+        <svg className="dn" role="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <g id="external-link" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></g>
+        </svg>
+
         <AnimatedParent animate={this.state.isMounted ? 'open' : 'init'}>
           {/* Resume */}
           <section className="mb4 lh-copy">
@@ -142,14 +177,29 @@ class Resume extends PageBase {
             {Skills}
           </section>
 
-          {/* Interests */}
+          {/* Misc. */}
           <section>
             <AnimatedItem>
-              <h2 className="f3 mb3 mt0 lh-title">{this.page.interests.title}</h2>
+              <h2 className="f3 mb3 mt0 lh-title">{this.page.misc.title}</h2>
             </AnimatedItem>
 
-            <div className="cf">
-              {Interests}
+            {/* Interests */}
+            <div className="mb3">
+              <AnimatedItem>
+                <h3 className="f4 mb3 mt0 lh-title">{this.page.misc.interests.title}</h3>
+              </AnimatedItem>
+
+              <div className="cf">
+                {Interests}
+              </div>
+            </div>
+
+            {/* Books */}
+            <div className="">
+              <AnimatedItem>
+                <h3 className="f4 mb3 mt0 lh-title">{this.page.misc.books.title}</h3>
+              </AnimatedItem>
+              {Books}
             </div>
           </section>
         </AnimatedParent>
@@ -193,11 +243,22 @@ query {
           items
         }
       }
-      interests {
+      misc {
         title
-        items {
-          name
-          icon
+        interests {
+          title
+          items {
+            name
+            icon
+          }
+        }
+        books {
+          title
+          items {
+            title
+            publisher
+            preview
+          }
         }
       }
     }

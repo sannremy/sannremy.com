@@ -11,6 +11,7 @@ meta:
     - e-commerce
     - user interface
     - information technology
+    - learn
   description: Software Engineer - Sann-Remy Chea online resume
   subject: Online version of Software Engineer resume
   href: /resume/
@@ -70,22 +71,33 @@ page:
         items:
           - English – Fluent
           - French – Native
-  interests:
-    title: Interests
-    items:
-      - name: Tennis
-        icon: 1F3BE
-      - name: Cats
-        icon: 1F63B
-      - name: Gaming
-        icon: 1F3AE
-      - name: ComputerNerd
-        icon: 1F913
-      - name: RaspberryPi
-        icon: E1C9
-      - name: Programming
-        icon: E1C1
-      - name: HomeAutomation
-        icon: 1F916
-      - name: FamilyTime
-        icon: 1F468-200D-1F469-200D-1F467-200D-1F466
+  misc:
+    title: Misc.
+    interests:
+      title: Interests
+      items:
+        - name: Tennis
+          icon: 1F3BE
+        - name: Cats
+          icon: 1F63B
+        - name: Gaming
+          icon: 1F3AE
+        - name: ComputerNerd
+          icon: 1F913
+        - name: RaspberryPi
+          icon: E1C9
+        - name: Programming
+          icon: E1C1
+        - name: HomeAutomation
+          icon: 1F916
+        - name: FamilyTime
+          icon: 1F468-200D-1F469-200D-1F467-200D-1F466
+    books:
+      title: Books reviewed
+      items:
+        - title: WebSocket Essentials - Building Apps with HTML5 WebSockets
+          publisher: Packt Publishing
+          preview: https://books.google.fr/books?id=Zo39CAAAQBAJ&printsec=frontcover
+        - title: Getting Started with HTML5 WebSocket Programming
+          publisher: Packt Publishing
+          preview: https://books.google.fr/books?id=-1aBaguTz2MC&printsec=frontcover
