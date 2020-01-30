@@ -26,7 +26,7 @@ module.exports = {
       options: {
         precachePages: [
           `/`,
-          `/resume/`,
+          `/resume`,
         ],
       },
     },

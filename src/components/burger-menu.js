@@ -66,7 +66,7 @@ class BurgerMenu extends React.Component {
           <li>
             <NavLink
               onClick={() => this.closeMenu()}
-              to="/resume/"
+              to="/resume"
               className={`${baseClassName} dark-gray bm-item-hover`}>
               Resume
             </NavLink>
