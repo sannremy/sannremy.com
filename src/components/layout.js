@@ -1,96 +1,62 @@
 import React from "react"
-// import PropTypes from "prop-types"
-import { Link } from "gatsby"
-// import { connect } from "react-redux"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import BurgerMenu from "./burger-menu"
-import picture from "../assets/sann-remy-chea.jpg"
+import Img from "gatsby-image"
 
 import "../styles/main.scss"
-import { AnimatedParent, AnimatedItem } from "./animation"
 
-// const Counter = ({ count, increment }) => (
-//   <div>
-//     <p>Count: {count}</p>
-//     <button onClick={increment}>Increment</button>
-//   </div>
-// )
-
-// Counter.propTypes = {
-//   count: PropTypes.number.isRequired,
-//   increment: PropTypes.func.isRequired,
-// }
-
-// const mapStateToProps = ({ count }) => {
-//   return { count }
-// }
-
-// const mapDispatchToProps = dispatch => {
-//   return { increment: () => dispatch({ type: `INCREMENT` }) }
-// }
-
-// const ConnectedCounter = connect(mapStateToProps, mapDispatchToProps)(Counter)
-
-class DefaultLayout extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isMounted: false
+export default ({ children }) => {
+  const {
+    layoutYaml,
+    file,
+  } = useStaticQuery(graphql`
+    query {
+      file(relativePath: {eq: "sann-remy-chea.jpg"}) {
+        childImageSharp {
+          fluid(maxWidth: 128) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      layoutYaml {
+        name
+        role
+      }
     }
-  }
+  `)
 
-  componentDidMount() {
-    this.setState({
-      isMounted: true
-    });
-  }
-
-  render() {
-    return (
-      <div id="outer-container">
-        {/* Burger menu */}
+  return (
+    <div id="outer-container">
+      {/* Burger menu */}
+      <nav>
         <BurgerMenu />
+      </nav>
 
-        {/* Main content */}
-        <main id="page-wrap" className="relative center mw6 bg-white f6 pa3">
-          {/* Picture + Header */}
-          <section>
-            <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
-              <div className="tc pa4">
-                <Link to="/" className="no-underline dark-gray">
-                  <AnimatedItem>
-                    <img src={picture} className="border-box br-100 pa1 ba b--black-10 w4 mw-40 dib" alt="avatar"/>
-                  </AnimatedItem>
-                  <AnimatedItem>
-                    <h1 className="f4">{this.props.name}</h1>
-                  </AnimatedItem>
-                </Link>
-                <AnimatedItem>
-                  <h2 className="f5 fw4 gray mt0">{this.props.role}</h2>
-                </AnimatedItem>
-                <AnimatedItem>
-                  <hr className="mw3 ba b--black-10" />
-                </AnimatedItem>
+      {/* Main content */}
+      <div id="page-wrap" className="relative center mw6 bg-white f6 pa3">
+        {/* Picture + Header */}
+        <header>
+          <div className="tc pa4">
+            <Link to="/" className="no-underline dark-gray">
+              <div className="picture border-box br-100 pa1 ba b--black-10 w4 mw-40 dib">
+                <Img fluid={file.childImageSharp.fluid} alt="A picture of Sann-Remy Chea" />
               </div>
-            </AnimatedParent>
-          </section>
+              <div className="f4 b" style={{ margin: "0.67em 0" }}>{layoutYaml.name}</div>
+            </Link>
+            <div className="f5 gray" style={{ marginBottom: "0.83em" }}>{layoutYaml.role}</div>
+            <div className="w3 center separator" />
+          </div>
+        </header>
 
-          {/* Page content */}
-          {this.props.children}
-
-          {/* <ConnectedCounter />
-          <ul>
-            <li className="w-20 center dib">
-              <Link to="/resume/">Resume</Link>
-            </li>
-            <li className="w-20 center dib">
-              <Link to="/books/">Books</Link>
-            </li>
-          </ul> */}
-          <div className="pv4 tc">Footer</div>
+        {/* Page content */}
+        <main>
+          {children}
         </main>
-      </div>
-    )
-  }
-}
 
-export default DefaultLayout
+        <footer>
+          <div className="pv4 tc"></div>
+        </footer>
+      </div>
+    </div>
+  )
+}

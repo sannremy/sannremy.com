@@ -2,6 +2,7 @@ import posed from "react-pose"
 
 const AnimatedParent = posed.div({
   open: {
+    delayChildren: 50,
     staggerChildren: 100,
   },
   init: {},
@@ -20,5 +21,5 @@ const AnimatedItem = posed.div({
 
 export {
     AnimatedItem,
-    AnimatedParent
+    AnimatedParent,
 }

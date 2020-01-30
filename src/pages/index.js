@@ -1,37 +1,20 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 import { AnimatedItem, AnimatedParent } from "../components/animation"
 import Tooltip from "../components/tooltip"
 import Meta from "../components/meta"
+import Base from "./base"
+// import PropTypes from "prop-types"
+// import { connect } from "react-redux"
 
-class Index extends React.Component {
+class Index extends Base {
   constructor(props) {
-    super(props)
-    this.state = {
-      isMounted: false
-    }
-  }
-
-  componentDidMount() {
-    this.setState({
-      isMounted: true
-    });
+    super("index", props)
   }
 
   render() {
-    const {
-      layoutYaml,
-      indexYaml,
-    } = this.props.data
-
-    const {
-      meta,
-      page
-    } = indexYaml
-
     const SocialItem = ({ name, icon, href }) => (
-      <a className="link dim db mw2 w-40 center" href={href}>
+      <a className="link dim db mw2 w-40 center" href={href} rel="nofollow">
         <Tooltip title={name}>
           <svg
             className="icon"
@@ -46,7 +29,7 @@ class Index extends React.Component {
 
     const SocialComponent = (
       <ul className="dark-gray list pl0 pv4 tc">
-        {page.social.map((social, index) =>
+        {this.page.social.map((social, index) =>
           (
             <li key={"social-" + index} className="mw4 w-33 center dib">
               <AnimatedItem>
@@ -58,30 +41,49 @@ class Index extends React.Component {
       </ul>
     )
 
+    // const Counter = ({ count, increment }) => (
+    //   <div>
+    //     <p>Count: {count}</p>
+    //     <button onClick={increment}>Increment</button>
+    //   </div>
+    // )
+
+    // Counter.propTypes = {
+    //   count: PropTypes.number.isRequired,
+    //   increment: PropTypes.func.isRequired,
+    // }
+
+    // const mapStateToProps = ({ count }) => {
+    //   return { count }
+    // }
+
+    // const mapDispatchToProps = dispatch => {
+    //   return { increment: () => dispatch({ type: `INCREMENT` }) }
+    // }
+
+    // const ConnectedCounter = connect(mapStateToProps, mapDispatchToProps)(Counter)
+
     return (
-      <Layout {...layoutYaml}>
+      <div>
         <Meta
           href="/"
-          {...meta}
+          {...this.meta}
         />
         <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
+          {/* <ConnectedCounter /> */}
           <AnimatedItem>
-            <p className="lh-copy center f6 dark-gray ma0">{page.description}</p>
+            <p className="lh-copy center f6 dark-gray ma0">{this.page.description}</p>
           </AnimatedItem>
 
           {SocialComponent}
         </AnimatedParent>
-      </Layout>
+      </div>
     )
   }
 }
 
 export const query = graphql`
-{
-  layoutYaml {
-    name
-    role
-  }
+query {
   indexYaml {
     meta {
       title

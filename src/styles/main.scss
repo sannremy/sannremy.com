@@ -4,6 +4,11 @@
 @import "variables";
 @import "burger-menu";
 
+*:focus,
+.link:focus {
+  outline: none;
+}
+
 body {
   font-family: $fontStack;
 }
@@ -11,4 +16,17 @@ body {
 svg.icon {
   fill: rgba(0, 0, 0, 0.7);
   height: 100%;
+}
+
+.separator {
+  height: 3px;
+  background-image: $bgGradient;
+}
+
+.picture {
+  .gatsby-image-wrapper {
+    img {
+      border-radius: 100%;
+    }
+  }
 }

@@ -1,81 +1,73 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Layout from "../components/layout"
 import Tooltip from "../components/tooltip"
 import { AnimatedItem, AnimatedParent } from "../components/animation"
 import Meta from "../components/meta"
+import Base from "./base"
+import moment from "moment"
 
-class Resume extends React.Component {
+class Resume extends Base {
   constructor(props) {
-    super(props)
-    this.state = {
-      isMounted: false
-    }
-  }
-
-  componentDidMount() {
-    this.setState({
-      isMounted: true
-    });
+    super("resume", props)
   }
 
   render() {
-    const {
-      layoutYaml,
-      resumeYaml,
-    } = this.props.data
+    const ymlDateFormat = "MM-YYYY"
+    const displayDateFormat = "MM/YYYY"
+    const Experience = this.page.experience.items.map((experience, index) => {
+      const startDate = moment(experience.startDate, ymlDateFormat)
+      const endDate = experience.endDate ? moment(experience.endDate, ymlDateFormat) : moment()
+      const durationText = endDate.from(startDate, true);
+      const dateText = `${startDate.format(displayDateFormat)} – ${experience.endDate ? endDate.format(displayDateFormat) : "present"}`
 
-    const {
-      meta,
-      page
-    } = resumeYaml
-
-    const Experience = page.experience.items.map((experience, index) => {
       return (
         <AnimatedItem key={'experience-' + index}>
-          <section className="cf">
+          <div className="cf mb3 lh-copy">
             <div className="fl w-30 v-top pr3">
-              <p className="lh-copy ma0">{experience.company} - {experience.role}</p>
+              <div className="f6">{dateText}</div>
+              <div className="f7">{durationText}</div>
             </div>
             <div className="fl w-70 v-top">
-              <p className="lh-copy ma0">{experience.description}</p>
+              <div className="f6 b">{experience.company}</div>
+              <div class="f6">{experience.role}</div>
+              <p className="f6 mb0">{experience.description}</p>
             </div>
-          </section>
+          </div>
         </AnimatedItem>
       )
     })
 
-    const Education = page.education.items.map((education, index) => {
+    const Education = this.page.education.items.map((education, index) => {
       return (
         <AnimatedItem key={'education-' + index}>
-          <section className="cf">
+          <div className="cf mb3 lh-copy">
             <div className="fl w-30 v-top pr3">
-              <p className="lh-copy ma0">{education.name} - {education.degree}</p>
+              <div className="f6">{education.year}</div>
             </div>
             <div className="fl w-70 v-top">
-              <p className="lh-copy ma0">{education.description}</p>
+              <div className="f6 b">{education.degree}</div>
+              <div class="f6">{education.name}</div>
+              <p className="f6 mb0">{education.description}</p>
             </div>
-          </section>
+          </div>
         </AnimatedItem>
       )
     })
 
-    const Skills = page.skills.items.map((skill, index) => {
+    const Skills = this.page.skills.items.map((skill, index) => {
       const items = (
-        <ul className="list pa0 ma0 center">
+        <ul className="list pa0 ma0 center lh-copy">
           {skill.items.map((item, itemIndex) => (
-            <li key={'item-' + index + ' - ' + itemIndex} className="lh-copy">{item}</li>
+            <li key={'item-' + index + ' - ' + itemIndex} className="db">{item}</li>
           ))}
         </ul>
       )
 
       return (
         <AnimatedItem key={'skill-' + index}>
-            <section className="cf">
-            <div className="fl w-30 v-top pr3">
-              <span className="lh-copy">{skill.category}</span>
-            </div>
-            <div className="fl w-70 v-top">{items}</div>
+          <section className="cf lh-copy mb3">
+            <div className="b">{skill.category}</div>
+            <div>{items}</div>
           </section>
         </AnimatedItem>
       )
@@ -87,7 +79,7 @@ class Resume extends React.Component {
       return (
         <Tooltip title={name}>
           <div className="inline-flex items-center">
-            <img className="db w2" src={emoji} alt={name} title={name} />
+            <img className="db w2" src={emoji} alt={name} />
           </div>
         </Tooltip>
       )
@@ -95,7 +87,7 @@ class Resume extends React.Component {
 
     const Interests = (
       <ul className="list pa0 ma0 center">
-        {page.interests.items.map((interest, index) => {
+        {this.page.interests.items.map((interest, index) => {
           return (
             <li key={'interest-' + index} className="dib mr2 mb2">
               <AnimatedItem>
@@ -108,73 +100,74 @@ class Resume extends React.Component {
     )
 
     return (
-      <Layout {...layoutYaml}>
+      <div>
         <Meta
           href="/resume/"
-          {...meta}
+          {...this.meta}
         />
         <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
-          <div className="mb4">
+          {/* Resume */}
+          <section className="mb4 lh-copy">
             <AnimatedItem>
-              <h1 className="ma0">{page.title}</h1>
+              <h1 className="ma0">{this.page.title}</h1>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="lh-copy">{page.description}</p>
+              <p className="b">{this.page.situation}</p>
             </AnimatedItem>
-          </div>
+            <AnimatedItem>
+              <p>{this.page.description}</p>
+            </AnimatedItem>
+          </section>
 
           {/* Experience */}
-          <div className="mb3">
+          <section className="mb4">
             <AnimatedItem>
-              <h2 className="f3 mb3 mt0 lh-title">{page.experience.title}</h2>
+              <h2 className="f3 mb3 mt0 lh-title">{this.page.experience.title}</h2>
             </AnimatedItem>
             {Experience}
-          </div>
+          </section>
 
           {/* Education */}
-          <div className="mb3">
+          <section className="mb4">
             <AnimatedItem>
-              <h2 className="f3 mb3 mt0 lh-title">{page.education.title}</h2>
+              <h2 className="f3 mb3 mt0 lh-title">{this.page.education.title}</h2>
             </AnimatedItem>
             {Education}
-          </div>
+          </section>
 
           {/* Skill */}
-          <div className="mb3">
+          <section className="mb4">
             <AnimatedItem>
-              <h2 className="f3 mb3 mt0 lh-title">{page.skills.title}</h2>
+              <h2 className="f3 mb3 mt0 lh-title">{this.page.skills.title}</h2>
             </AnimatedItem>
             {Skills}
-          </div>
+          </section>
 
-          <div>
+          {/* Interests */}
+          <section>
             <AnimatedItem>
-              <h2 className="f3 mb3 mt0 lh-title">{page.interests.title}</h2>
+              <h2 className="f3 mb3 mt0 lh-title">{this.page.interests.title}</h2>
             </AnimatedItem>
 
-            <section className="cf">
+            <div className="cf">
               {Interests}
-            </section>
-          </div>
+            </div>
+          </section>
         </AnimatedParent>
-      </Layout>
+      </div>
     )
   }
 }
 
-
 export const query = graphql`
-{
-  layoutYaml {
-    name
-    role
-  }
+query {
   resumeYaml {
     meta {
       title
     }
     page {
       title
+      situation
       description
       experience {
         title
@@ -182,6 +175,8 @@ export const query = graphql`
           company
           role
           description
+          startDate
+          endDate
         }
       }
       education {
@@ -189,7 +184,7 @@ export const query = graphql`
         items {
           name
           degree
-          description
+          year
         }
       }
       skills {

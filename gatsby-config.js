@@ -1,12 +1,15 @@
 module.exports = {
-  siteMetadata: {
-    title: `Hello!`,
-  },
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-remove-trailing-slashes`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-yaml`,
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: `${__dirname}/src/components/layout`,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -36,5 +39,14 @@ module.exports = {
         ignore: [`**/\.*`],
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/assets/`,
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ],
 }

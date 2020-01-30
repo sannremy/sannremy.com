@@ -1,38 +1,20 @@
 import React from "react"
-import Layout from "../components/layout"
+import { graphql } from "gatsby"
 import { AnimatedItem, AnimatedParent } from "../components/animation"
 import Meta from "../components/meta"
+import Base from "./base"
 
-class Books extends React.Component {
+class Books extends Base {
   constructor(props) {
-    super(props)
-    this.state = {
-      isMounted: false
-    }
-  }
-
-  componentDidMount() {
-    this.setState({
-      isMounted: true
-    });
+    super("books", props)
   }
 
   render() {
-    const {
-      layoutYaml,
-      booksYaml,
-    } = this.props.data
-
-    const {
-      meta,
-      page
-    } = booksYaml
-
     const BookItem = ({ title, publisher, preview }) => (
       <div className="flex-auto">
         <h1 className="f6 fw6 lh-title dark-gray mv0">{title}</h1>
         <h2 className="f6 fw4 mt1 mb0 gray">{publisher}</h2>
-        <a className="no-underline dark-gray link dim inline-flex items-center tc h1 mt3 mb0" href={preview}>
+        <a className="no-underline dark-gray link dim inline-flex items-center tc h1 mt3 mb0" href={preview} rel="nofollow">
           <span className="f6">Preview</span>
           <svg className="dib icon pl1" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <use xlinkHref="#external-link" x="0" y="0" />
@@ -43,9 +25,9 @@ class Books extends React.Component {
 
     const BooksComponent = (
       <ul className="list pl0 mt0 center">
-        {page.books.map((book, index) => {
+        {this.page.books.map((book, index) => {
           return (
-            <li key={"book-" + index} className={"flex items-center lh-copy pv3 ph0-l" + (index + 1 === page.books.length ? "" : " bb b--black-10")}>
+            <li key={"book-" + index} className={"flex items-center lh-copy pv3 ph0-l" + (index + 1 === this.page.books.length ? "" : " bb b--black-10")}>
               <AnimatedItem>
                 <BookItem {...book} />
               </AnimatedItem>
@@ -56,7 +38,7 @@ class Books extends React.Component {
     )
 
     return (
-      <Layout {...layoutYaml}>
+      <div>
         {/* SVG icons */}
         <svg className="dn" role="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <g id="external-link" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></g>
@@ -64,7 +46,7 @@ class Books extends React.Component {
 
         <Meta
           href="/books/"
-          {...meta}
+          {...this.meta}
         />
         <AnimatedParent pose={this.state.isMounted ? 'open' : 'init'}>
           <div className="center f6">
@@ -75,17 +57,13 @@ class Books extends React.Component {
 
           {BooksComponent}
         </AnimatedParent>
-      </Layout>
+      </div>
     )
   }
 }
 
 export const query = graphql`
-{
-  layoutYaml {
-    name
-    role
-  }
+query {
   booksYaml {
     meta {
       title

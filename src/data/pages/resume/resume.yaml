@@ -1,37 +1,61 @@
 meta:
-  title: Resume!
+  title: Online resume
 page:
   title: Resume
-  description: Current situation - I am not looking for opportunities at the moment.
+  situation: Current situation – I am not looking for opportunities.
+  description: "Seasoned Software Engineer with more than 8 years of experience in the Internet and Video Game industry. My introduction in two words: Passion and Automation."
   experience:
     title: Work experience
     items:
-      - company: kljlkj
-        role: ljklkj
-        description: kljlkj
-      - company: kljlkj22
-        role: kljlkj
-        description: kljlkj
+      - company: Activision Blizzard
+        role: Software Engineer
+        description: Building Web and mobile experience for World of Warcraft, Diablo, Hearthstone, Overwatch and Call of Duty franchises.
+        startDate: 11-2015
+        endDate: null
+      - company: Rakuten
+        role: Front-end Engineer
+        description: Built and maintained interfaces for its French e-commerce webiste.
+        startDate: 03-2015
+        endDate: 11-2015
+      - company: Ubisoft
+        role: Software Engineer
+        description: Worked on browser-based games.
+        startDate: 01-2012
+        endDate: 03-2015
   education:
     title: Education
     items:
-      - name: kljlkj
-        degree: kljlkj
-        description: kljlkj
-      - name: kljlkj
-        degree: kljlkj
-        description: kljlkj
+      - name: EISTI
+        degree: MSc in Computer Science
+        year: 2011
+      - name: University of Cergy-Pontoise
+        degree: BS in Math and Physics
+        year: 2009
   skills:
     title: Skills
     items:
-      - category: Programming
+      - category: Programming & Framework
         items:
-          - js
-          - php
-      - category: Programming2
+          - JavaScript – Node.js, Express, React, Redux, Webpack, Babel, Gatsby
+          - CSS – SASS, LESS, Bootstrap, Tachyons
+          - PHP – Laravel
+      - category: Public & Private cloud
         items:
-          - js2
-          - php2
+          - AWS
+          - Google Cloud
+          - OpenStack
+      - category: Databases
+        items:
+          - MySQL
+          - MongoDB
+      - category: CI/CD
+        items:
+          - Jenkins pipeline
+          - SonarQube
+      - category: Languages
+        items:
+          - English – Fluent
+          - French – Native
   interests:
     title: Interests
     items:
@@ -47,5 +71,7 @@ page:
         icon: E1C9
       - name: Programming
         icon: E1C1
+      - name: HomeAutomation
+        icon: 1F916
       - name: FamilyTime
         icon: 1F468-200D-1F469-200D-1F467-200D-1F466

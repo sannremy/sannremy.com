@@ -1,7 +1,7 @@
 meta:
   title: Hello!
 page:
-  description: "Currently working for Blizzard Entertainment. I mostly do full stack development: building UI, server code, infrastructure, database. I speak English and French."
+  description: "Currently working for Blizzard Entertainment. I mostly do full stack development: building UI, server code, infrastructure, database. Based in France, I speak English and French."
   social:
     - href: https://github.com/srchea
       name: GitHub
