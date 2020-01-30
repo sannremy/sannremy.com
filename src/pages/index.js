@@ -28,7 +28,7 @@ class Index extends PageBase {
     )
 
     const SocialComponent = (
-      <ul className="dark-gray list pl0 pv4 tc">
+      <ul className="list pl0 pv4 tc">
         {this.page.social.map((social, index) =>
           (
             <li key={"social-" + index} className="mw4 w-33 center dib">
@@ -66,13 +66,12 @@ class Index extends PageBase {
     return (
       <div>
         <Meta
-          href="/"
           {...this.meta}
         />
         <AnimatedParent animate={this.state.isMounted ? 'open' : 'init'}>
           {/* <ConnectedCounter /> */}
           <AnimatedItem>
-            <p className="lh-copy center f6 dark-gray ma0">{this.page.description}</p>
+            <p className="lh-copy center f6 ma0">{this.page.description}</p>
           </AnimatedItem>
 
           {SocialComponent}

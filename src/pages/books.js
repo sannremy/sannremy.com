@@ -12,9 +12,9 @@ class Books extends PageBase {
   render() {
     const BookItem = ({ title, publisher, preview }) => (
       <div className="flex-auto">
-        <h1 className="f6 fw6 lh-title dark-gray mv0">{title}</h1>
+        <h1 className="f6 fw6 lh-title mv0">{title}</h1>
         <h2 className="f6 fw4 mt1 mb0 gray">{publisher}</h2>
-        <a className="no-underline dark-gray link dim inline-flex items-center tc h1 mt3 mb0" href={preview} rel="nofollow">
+        <a className="no-underline link dim inline-flex items-center tc h1 mt3 mb0 dark-gray" href={preview} rel="nofollow">
           <span className="f6">Preview</span>
           <svg className="dib icon pl1" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <use xlinkHref="#external-link" x="0" y="0" />
@@ -45,7 +45,6 @@ class Books extends PageBase {
         </svg>
 
         <Meta
-          href="/books/"
           {...this.meta}
         />
         <AnimatedParent animate={this.state.isMounted ? 'open' : 'init'}>

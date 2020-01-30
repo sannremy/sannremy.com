@@ -1,5 +1,18 @@
 meta:
-  title: Books!
+  title: Books reviewed
+  keywords:
+    - learn
+    - programming
+    - bi-directional
+    - client
+    - server
+    - websocket
+    - http protocol
+    - javascript
+    - socket.io
+  description: Books reviewed by Sann-Remy Chea on WebSocket and HTML5 technologies
+  subject: Books officially reviewed by Sann-Remy Chea
+  href: /
 page:
   title: Books reviewed
   books:

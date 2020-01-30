@@ -1,7 +1,16 @@
 meta:
   title: Hello!
+  keywords:
+    - about me
+    - social media
+    - video games
+    - internet
+    - technology
+  description: Software Engineer - Sann-Remy Chea personal website
+  subject: Personal website of a Software Engineer
+  href: /
 page:
-  description: "Currently working for Blizzard Entertainment. I mostly do full stack development: building UI, server code, infrastructure, database. Based in France, I speak English and French."
+  description: "Currently working for Blizzard Entertainment (Activision Blizzard). I mostly do full stack development: building UI, server code, infrastructure, database. Based in France, I speak English and French."
   social:
     - href: https://github.com/srchea
       name: GitHub

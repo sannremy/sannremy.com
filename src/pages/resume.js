@@ -102,7 +102,6 @@ class Resume extends PageBase {
     return (
       <div>
         <Meta
-          href="/resume/"
           {...this.meta}
         />
         <AnimatedParent animate={this.state.isMounted ? 'open' : 'init'}>

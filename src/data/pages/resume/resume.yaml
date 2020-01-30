@@ -1,5 +1,19 @@
 meta:
   title: Online resume
+  keywords:
+    - backend
+    - frontend
+    - fullstack
+    - curriculum vitae
+    - tech lead
+    - diploma
+    - gaming
+    - e-commerce
+    - user interface
+    - information technology
+  description: Software Engineer - Sann-Remy Chea online resume
+  subject: Online version of Software Engineer resume
+  href: /resume/
 page:
   title: Resume
   situation: Current situation – I am not looking for opportunities.
