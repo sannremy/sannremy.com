@@ -74,23 +74,20 @@ class Resume extends PageBase {
     })
 
     const BookItem = ({ title, publisher, preview }) => (
-      <div className="flex-auto">
-        <h1 className="f6 fw6 lh-title mv0">{title}</h1>
-        <h2 className="f6 fw4 mt1 mb0 gray">{publisher}</h2>
-        <a className="no-underline link dim inline-flex items-center tc h1 mt2 mb0 dark-gray" href={preview} rel="nofollow">
-          <span className="f6">Preview</span>
-          <svg className="dib icon pl1" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <use xlinkHref="#external-link" x="0" y="0" />
-          </svg>
-        </a>
-      </div>
+      <a className="db no-underline link dim dark-gray lh-copy" href={preview} rel="nofollow">
+        <span className="f6 db">{title}</span>
+        <span>{publisher}</span>
+        <svg className="dib icon w1 h1 pl1 v-mid" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <use xlinkHref="#external-link" x="0" y="0" />
+        </svg>
+      </a>
     )
 
     const Books = (
-      <ul className="list pl0 mt0 center">
+      <ul className="list pa0 ma0 center">
         {this.page.misc.books.items.map((book, index) => {
           return (
-            <li key={"book-" + index} className={"flex items-center lh-copy pa0 mt3"}>
+            <li key={"book-" + index} className={"pa0 mt3"}>
               <AnimatedItem>
                 <div className={(index + 1 === this.page.misc.books.items.length ? "" : "pb3 bb b--black-10")}>
                   <BookItem {...book} />
@@ -103,7 +100,7 @@ class Resume extends PageBase {
     )
 
     const InterestIcon = (props) => {
-      const emoji = require("../assets/openmoji-svg-color/" + props.icon + ".svg")
+      const emoji = require("../assets/openmoji/" + props.icon + ".svg")
       const name = "#" + props.name
       return (
         <Tooltip title={name}>
