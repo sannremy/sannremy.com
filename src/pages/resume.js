@@ -183,8 +183,16 @@ class Resume extends PageBase {
               <h2 className="f3 mb3 mt0 lh-title">{this.page.misc.title}</h2>
             </AnimatedItem>
 
-            {/* Interests */}
+            {/* Books */}
             <div className="mb3">
+              <AnimatedItem>
+                <h3 className="f4 mb3 mt0 lh-title">{this.page.misc.books.title}</h3>
+              </AnimatedItem>
+              {Books}
+            </div>
+
+            {/* Interests */}
+            <div className="">
               <AnimatedItem>
                 <h3 className="f4 mb3 mt0 lh-title">{this.page.misc.interests.title}</h3>
               </AnimatedItem>
@@ -192,14 +200,6 @@ class Resume extends PageBase {
               <div className="cf">
                 {Interests}
               </div>
-            </div>
-
-            {/* Books */}
-            <div className="">
-              <AnimatedItem>
-                <h3 className="f4 mb3 mt0 lh-title">{this.page.misc.books.title}</h3>
-              </AnimatedItem>
-              {Books}
             </div>
           </section>
         </AnimatedParent>
