@@ -3,11 +3,11 @@ import { graphql } from "gatsby"
 import { AnimatedItem, AnimatedParent } from "../components/animation"
 import Tooltip from "../components/tooltip"
 import Meta from "../components/meta"
-import Base from "./base"
+import PageBase from "../components/page-base"
 // import PropTypes from "prop-types"
 // import { connect } from "react-redux"
 
-class Index extends Base {
+class Index extends PageBase {
   constructor(props) {
     super("index", props)
   }

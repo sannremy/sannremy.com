@@ -1,6 +1,6 @@
 import React from "react"
 
-class Base extends React.Component {
+class PageBase extends React.Component {
   constructor(pageName, props) {
     super(props)
 
@@ -9,7 +9,6 @@ class Base extends React.Component {
       page,
     } = this.props.data[pageName + "Yaml"]
 
-    this.pageName = pageName
     this.page = page
     this.meta = meta
 
@@ -25,4 +24,4 @@ class Base extends React.Component {
   }
 }
 
-export default Base
+export default PageBase

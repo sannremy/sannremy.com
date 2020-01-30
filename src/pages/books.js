@@ -2,9 +2,9 @@ import React from "react"
 import { graphql } from "gatsby"
 import { AnimatedItem, AnimatedParent } from "../components/animation"
 import Meta from "../components/meta"
-import Base from "./base"
+import PageBase from "../components/page-base"
 
-class Books extends Base {
+class Books extends PageBase {
   constructor(props) {
     super("books", props)
   }

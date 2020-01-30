@@ -3,10 +3,10 @@ import { graphql } from "gatsby"
 import Tooltip from "../components/tooltip"
 import { AnimatedItem, AnimatedParent } from "../components/animation"
 import Meta from "../components/meta"
-import Base from "./base"
+import PageBase from "../components/page-base"
 import moment from "moment"
 
-class Resume extends Base {
+class Resume extends PageBase {
   constructor(props) {
     super("resume", props)
   }
