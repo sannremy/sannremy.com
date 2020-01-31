@@ -209,7 +209,11 @@ export const query = graphql`
 query {
   resumeYaml {
     meta {
+      keywords
       title
+      description
+      subject
+      href
     }
     page {
       title

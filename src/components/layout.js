@@ -54,7 +54,7 @@ export default ({ children }) => {
         </main>
 
         <footer>
-          <div className="pv4 tc"></div>
+          <div className="pv4" />
         </footer>
       </div>
     </div>

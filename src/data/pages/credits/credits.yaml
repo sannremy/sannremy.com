@@ -1,0 +1,44 @@
+meta:
+  title: Hello!
+  keywords:
+    - credits
+    - open source
+    - licence
+    - libraries
+  description: Credits - Sann-Remy Chea personal website
+  subject: Credits to open source components that used by this website
+  href: /credits
+page:
+  title: Credits
+  description: "This website uses open source libraries. I acknowledge and am grateful to these developers for their contributions to open source."
+  credits:
+    - name: Framer Motion
+      href: https://github.com/framer/motion
+    - name: Gatsby
+      href: https://github.com/gatsbyjs/gatsby
+    - name: gh-pages
+      href: https://github.com/tschaub/gh-pages
+    - name: Moment.js
+      href: https://github.com/moment/moment
+    - name: node-sass
+      href: https://github.com/sass/node-sass
+    - name: normalize.css
+      href: https://github.com/necolas/normalize.css
+    - name: OpenMoji
+      href: https://github.com/hfg-gmuend/openmoji
+    - name: Prettier
+      href: https://github.com/prettier/prettier
+    - name: React
+      href: https://github.com/facebook/react
+    - name: react-burger-menu
+      href: https://github.com/negomi/react-burger-menu
+    - name: React Helmet
+      href: https://github.com/nfl/react-helmet
+    - name: React Redux
+      href: https://github.com/reduxjs/react-redux
+    - name: React Tippy
+      href: https://github.com/tvkhoa/react-tippy
+    - name: Redux
+      href: https://github.com/reduxjs/redux
+    - name: TACHYONS
+      href: https://github.com/tachyons-css/tachyons

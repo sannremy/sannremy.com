@@ -4,8 +4,6 @@ import { AnimatedItem, AnimatedParent } from "../components/animation"
 import Tooltip from "../components/tooltip"
 import Meta from "../components/meta"
 import PageBase from "../components/page-base"
-// import PropTypes from "prop-types"
-// import { connect } from "react-redux"
 
 class Index extends PageBase {
   constructor(props) {
@@ -41,35 +39,12 @@ class Index extends PageBase {
       </ul>
     )
 
-    // const Counter = ({ count, increment }) => (
-    //   <div>
-    //     <p>Count: {count}</p>
-    //     <button onClick={increment}>Increment</button>
-    //   </div>
-    // )
-
-    // Counter.propTypes = {
-    //   count: PropTypes.number.isRequired,
-    //   increment: PropTypes.func.isRequired,
-    // }
-
-    // const mapStateToProps = ({ count }) => {
-    //   return { count }
-    // }
-
-    // const mapDispatchToProps = dispatch => {
-    //   return { increment: () => dispatch({ type: `INCREMENT` }) }
-    // }
-
-    // const ConnectedCounter = connect(mapStateToProps, mapDispatchToProps)(Counter)
-
     return (
       <div>
         <Meta
           {...this.meta}
         />
         <AnimatedParent animate={this.state.isMounted ? 'open' : 'init'}>
-          {/* <ConnectedCounter /> */}
           <AnimatedItem>
             <p className="lh-copy center f6 ma0">{this.page.description}</p>
           </AnimatedItem>
@@ -85,7 +60,11 @@ export const query = graphql`
 query {
   indexYaml {
     meta {
+      keywords
       title
+      description
+      subject
+      href
     }
     page {
       description

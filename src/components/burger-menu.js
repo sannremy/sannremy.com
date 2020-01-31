@@ -54,7 +54,7 @@ class BurgerMenu extends React.Component {
         onStateChange={(state) => this.handleStateChange(state)}
         isOpen={this.state.menuOpen}
       >
-        <ul className="list pl0 mv0">
+        <ul className="list pa0 mv0">
           <li>
             <NavLink
               onClick={() => this.closeMenu()}
@@ -69,6 +69,14 @@ class BurgerMenu extends React.Component {
               to="/resume"
               className={`${baseClassName} dark-gray bm-item-hover`}>
               Resume
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              onClick={() => this.closeMenu()}
+              to="/credits"
+              className={`${baseClassName} dark-gray bm-item-hover`}>
+              Credits
             </NavLink>
           </li>
         </ul>
