@@ -1,5 +1,5 @@
 meta:
-  title: Hello!
+  title: Credits
   keywords:
     - credits
     - open source
@@ -9,7 +9,7 @@ meta:
   subject: Credits to open source components that used by this website
   href: /credits
 page:
-  title: Credits
+  title: Thank you!
   description: "This website uses open source libraries. I acknowledge and am grateful to these developers for their contributions to open source."
   credits:
     - name: Framer Motion
