@@ -1,6 +1,6 @@
 # Personal website
 
-![Deployment status](https://github.com/srchea/srchea.github.io/workflows/Deploy%20on%20GitHub%20pages/badge.svg)
+[![Deployment status](https://github.com/srchea/srchea.github.io/workflows/Deploy%20on%20GitHub%20pages/badge.svg)](https://github.com/srchea/srchea.github.io/actions)
 
 ## Production version
 Production version at: https://src.onl
