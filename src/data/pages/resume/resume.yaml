@@ -53,6 +53,7 @@ page:
         items:
           - JavaScript – Node.js, Express, React, Redux, Webpack, Babel, Gatsby
           - CSS – SASS, LESS, Bootstrap, Tachyons
+          - Java – Spring, Maven
           - PHP – Laravel
       - category: Public & Private cloud
         items:
