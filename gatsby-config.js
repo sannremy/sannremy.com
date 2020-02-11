@@ -1,4 +1,8 @@
 module.exports = {
+  siteMetadata: {
+    title: `Hello! - Sann-Remy Chea`,
+    siteUrl: `https://src.onl`,
+  },
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-remove-trailing-slashes`,
