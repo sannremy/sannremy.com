@@ -24,7 +24,7 @@ page:
     items:
       - company: Activision Blizzard
         role: Software Engineer
-        description: Building Web and mobile experience for World of Warcraft, Diablo, Hearthstone, Overwatch and Call of Duty franchises.
+        description: Building Web and mobile experience for World of Warcraft, Diablo, Hearthstone, Heroes of the Storm, Overwatch and Call of Duty franchises.
         startDate: 11-2015
         endDate: null
       - company: Rakuten
@@ -34,7 +34,7 @@ page:
         endDate: 11-2015
       - company: Ubisoft
         role: Software Engineer
-        description: Worked on browser-based games.
+        description: "Built and maintained browser games: Might and Magic: Heros Kingdoms, Howrse, Mojow Locow."
         startDate: 01-2012
         endDate: 03-2015
   education:
