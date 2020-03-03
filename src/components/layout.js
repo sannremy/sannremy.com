@@ -37,7 +37,7 @@ export default ({ children }) => {
         {/* Picture + Header */}
         <header>
           <div className="tc pa4">
-            <Link to="/" className="no-underline dark-gray">
+            <Link to="/" className="dib no-underline dark-gray home-link">
               <div className="picture border-box br-100 pa1 ba b--black-10 w4 mw-40 dib">
                 <Img fluid={file.childImageSharp.fluid} alt="A picture of Sann-Remy Chea" />
               </div>
