@@ -4,7 +4,13 @@ import Tooltip from "../components/tooltip"
 import { AnimatedItem, AnimatedParent } from "../components/animation"
 import Meta from "../components/meta"
 import PageBase from "../components/page-base"
-import moment from "moment"
+import dayjs from "dayjs"
+
+import customParseFormat from "dayjs/plugin/customParseFormat"
+import relativeTime from "dayjs/plugin/relativeTime"
+
+dayjs.extend(customParseFormat)
+dayjs.extend(relativeTime)
 
 class Resume extends PageBase {
   constructor(props) {
@@ -15,9 +21,9 @@ class Resume extends PageBase {
     const ymlDateFormat = "MM-YYYY"
     const displayDateFormat = "MM/YYYY"
     const Experience = this.page.experience.items.map((experience, index) => {
-      const startDate = moment(experience.startDate, ymlDateFormat)
-      const endDate = experience.endDate ? moment(experience.endDate, ymlDateFormat) : moment()
-      const durationText = endDate.from(startDate, true);
+      const startDate = dayjs(experience.startDate, ymlDateFormat)
+      const endDate = experience.endDate ? dayjs(experience.endDate, ymlDateFormat) : dayjs()
+      const durationText = endDate.from(startDate, true)
       const dateText = `${startDate.format(displayDateFormat)} – ${experience.endDate ? endDate.format(displayDateFormat) : "present"}`
 
       return (

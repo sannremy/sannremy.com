@@ -12,14 +12,14 @@ page:
   title: Thank you!
   description: "This website uses open source libraries. I acknowledge and am grateful to these developers for their contributions to open source."
   credits:
+    - name: Day.js
+      href: https://github.com/iamkun/dayjs
     - name: Framer Motion
       href: https://github.com/framer/motion
     - name: Gatsby
       href: https://github.com/gatsbyjs/gatsby
     - name: gh-pages
       href: https://github.com/tschaub/gh-pages
-    - name: Moment.js
-      href: https://github.com/moment/moment
     - name: node-sass
       href: https://github.com/sass/node-sass
     - name: normalize.css
