@@ -29,7 +29,7 @@ class Resume extends PageBase {
             </div>
             <div className="fl w-70 v-top">
               <div className="f6 b">{experience.company}</div>
-              <div class="f6">{experience.role}</div>
+              <div className="f6">{experience.role}</div>
               <p className="f6 mb0">{experience.description}</p>
             </div>
           </div>
@@ -46,7 +46,7 @@ class Resume extends PageBase {
             </div>
             <div className="fl w-70 v-top">
               <div className="f6 b">{education.degree}</div>
-              <div class="f6">{education.name}</div>
+              <div className="f6">{education.name}</div>
               <p className="f6 mb0">{education.description}</p>
             </div>
           </div>

@@ -1,3 +1,7 @@
+#page-wrap {
+  transition-duration: 250ms !important;
+}
+
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: absolute;
@@ -5,7 +9,7 @@
   left: 16px;
   width: 24px;
   height: 20px;
-  transition: opacity 100ms ease-in;
+  transition: all 100ms;
   opacity: 1;
 
   @media screen and (min-width: 32rem) {
@@ -26,7 +30,7 @@
 .bm-burger-bars {
   background: #333;
   opacity: 1;
-  transition: all 100ms ease-in;
+  transition: all 100ms;
 }
 
 /* Color/shape of burger icon bars on hover*/
@@ -39,7 +43,7 @@
   height: 24px;
   width: 24px;
   opacity: 1;
-  transition: all 100ms ease-in;
+  transition: all 100ms;
 
   &:hover {
     opacity: 0.5;
@@ -58,6 +62,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-menu-wrap {
   position: fixed;
   height: 100%;
+  transition-duration: 250ms !important;
 }
 
 /* General sidebar styles */
@@ -85,6 +90,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
+  transition-duration: 250ms !important;
 }
 
 .bm-item-list {
