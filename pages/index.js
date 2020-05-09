@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 let amplitude = null
-if (typeof window !== 'undefined') {
+if (typeof window !== 'undefined' && process.env.AMPLITUDE_KEY) {
   amplitude = require('amplitude-js')
   amplitude.getInstance().init(process.env.AMPLITUDE_KEY)
 }
