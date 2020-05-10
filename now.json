@@ -4,8 +4,7 @@
       "src": "/(.*)",
       "methods": ["POST", "GET"],
       "headers": {
-        "key": "access-control-allow-origin",
-        "value": "https://api.amplitude.com"
+        "access-control-allow-origin": "https://api.amplitude.com"
       }
     }
   ]
