@@ -2,7 +2,6 @@
   "routes": [
     {
       "src": "/(.*)",
-      "methods": ["POST", "GET"],
       "headers": {
         "access-control-allow-origin": "https://api.amplitude.com"
       }
