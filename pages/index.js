@@ -14,24 +14,27 @@ export default class Home extends React.Component {
   }
 
   handleTracking(event, eventType) {
+    let href = null
     if (event) {
       event.preventDefault()
+      href = event.currentTarget.href
     }
 
-    fetch('/api/amplitude', {
-      method: 'post',
-      body: JSON.stringify({
-        event_type: eventType
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    .then(() => {
-      if (event && event.currentTarget && event.currentTarget.href) {
-        window.location.href = event.currentTarget.href;
-      }
-    })
+    ((href) => {
+      fetch('/api/amplitude', {
+        method: 'post',
+        body: JSON.stringify({
+          event_type: eventType
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).finally(() => {
+        if (href) {
+          window.location.href = href
+        }
+      })
+    })(href)
   }
 
   render() {
