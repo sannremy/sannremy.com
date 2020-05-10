@@ -1,9 +1,10 @@
 {
+  "version": 2,
   "routes": [
     {
       "src": "/(.*)",
       "headers": {
-        "access-control-allow-origin": "https://api.amplitude.com"
+        "access-control-allow-origin": "*"
       }
     }
   ]
