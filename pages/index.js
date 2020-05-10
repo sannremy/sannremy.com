@@ -49,7 +49,7 @@ export default class Home extends React.Component {
             <h2 className="mt-1 text-base text-center text-gray-600">Software Engineer</h2>
           </div>
           <p className="mt-10 text-sm">
-            Working for Activision Blizzard, I&nbsp;create Web &amp; Mobile apps, I&nbsp;also mentor developers. Located in the Paris area in France, I&nbsp;speak English and French. <a onClick={e => this.handleTracking(e, 'content-email-link')} href="mailto:src@src.onl" className="hover:opacity-75 transition-opacity duration-150 ease-in-out">src@src.onl</a>
+            Working for Activision Blizzard, I&nbsp;create Web &amp; Mobile apps, I&nbsp;also mentor developers. Located in the Paris area in France, I&nbsp;speak English and French.
           </p>
         </main>
 
