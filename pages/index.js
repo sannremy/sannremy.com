@@ -9,19 +9,25 @@ if (typeof window !== 'undefined' && process.env.AMPLITUDE_KEY) {
 }
 
 export default class Home extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.handleTracking = this.handleTracking.bind(this);
   }
 
-  handleTracking (event, eventType) {
-    event.preventDefault()
+  componentDidMount() {
+    this.handleTracking(null, 'page-did-mount')
+  }
+
+  handleTracking(event, eventType) {
+    if (event) {
+      event.preventDefault()
+    }
 
     if (amplitude) {
       amplitude.getInstance().logEvent(eventType)
     }
 
-    if (event.currentTarget && event.currentTarget.href) {
+    if (event && event.currentTarget && event.currentTarget.href) {
       ((href) => {
         setTimeout(() => {
           window.location.href = href;
@@ -30,7 +36,7 @@ export default class Home extends React.Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div className="max-w-md mx-auto w-full text-gray-800 p-5">
         <Head>
