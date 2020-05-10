@@ -1,5 +1,5 @@
 const https = require('https')
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require('uuid')
 
 export const config = {
   api: {
@@ -13,9 +13,10 @@ export default (req, res) => {
 
   const event_type = req.body.event_type
 
-  let user_id = req.cookies.user_id
+  let user_id = req.cookies.uid
   if (!user_id) {
     user_id = uuidv4()
+
     res.setHeader('Set-Cookie', [
       `uid=${user_id}; HttpOnly; SameSite=Strict; Domain=src.onl; Secure;`
     ]);

@@ -18,7 +18,7 @@ export default class Home extends React.Component {
       event.preventDefault()
     }
 
-    fetch('/api/amplitutde', {
+    fetch('/api/amplitude', {
       method: 'post',
       body: JSON.stringify({
         event_type: eventType
