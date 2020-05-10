@@ -4,13 +4,50 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 export default class Home extends React.Component {
+  state = {
+    darkMode: (
+      typeof window !== 'undefined'
+      && window.matchMedia
+      && window.matchMedia('(prefers-color-scheme: dark)').matches
+    )
+  }
+
   constructor(props) {
-    super(props);
-    this.handleTracking = this.handleTracking.bind(this);
+    super(props)
+
+    this.handleTracking = this.handleTracking.bind(this)
+    this.switchDarkMode = this.switchDarkMode.bind(this)
   }
 
   componentDidMount() {
     this.handleTracking(null, 'page-view')
+
+    // Check if dark mode is enabled
+    if (this.state.darkMode) {
+      this.switchDarkMode(null, this.state.darkMode)
+    }
+  }
+
+  switchDarkMode(event, force = false) {
+    if (event) {
+      event.preventDefault()
+    }
+
+    const darkMode = force || !this.state.darkMode
+
+    this.setState({
+      darkMode
+    })
+
+    if (typeof window !== 'undefined') {
+      if (darkMode) {
+        document.documentElement.classList.add('mode-dark')
+        this.handleTracking(event, 'dark-mode-on')
+      } else {
+        document.documentElement.classList.remove('mode-dark')
+        this.handleTracking(event, 'dark-mode-off')
+      }
+    }
   }
 
   handleTracking(event, eventType) {
@@ -39,7 +76,7 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div className="max-w-md mx-auto w-full text-gray-800 p-5">
+      <div className="max-w-md mx-auto w-full text-gray-800 dark:text-gray-400 p-5 transition-colors duration-150 ease-in-out">
         <Head>
           <title>Sann-Remy Chea - Software Engineer</title>
           <link rel="icon" href="/favicon.ico" />
@@ -47,13 +84,11 @@ export default class Home extends React.Component {
 
         <main>
           <div className="flex item-center justify-center flex-col">
-            <Link href="/">
-              <a onClick={e => this.handleTracking(e, 'header-picture-link')} className="block w-32 mx-auto border border-gray-300 hover:border-gray-700 transition-colors duration-150 ease-in-out rounded-full p-1">
-                <img className="w-full rounded-full" src="/sann-remy-chea.jpg" />
-              </a>
-            </Link>
+            <span onClick={this.switchDarkMode} className="block w-32 mx-auto border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full p-1">
+              <img className="w-full rounded-full dark:opacity-90" src="/sann-remy-chea.jpg" />
+            </span>
             <h1 className="mt-3 font-semibold text-xl text-center">Sann-Remy Chea</h1>
-            <h2 className="mt-1 text-base text-center text-gray-600">Software Engineer</h2>
+            <h2 className="mt-1 text-base text-center text-gray-600 dark:text-gray-600">Software Engineer</h2>
           </div>
           <p className="mt-10 text-sm">
             Working for Activision Blizzard, I&nbsp;create Web &amp; Mobile apps, I&nbsp;also mentor developers. Located in the Paris area in France, I&nbsp;speak English and French.

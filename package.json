@@ -17,6 +17,7 @@
     "@fullhuman/postcss-purgecss": "^2.2.0",
     "autoprefixer": "^9.7.6",
     "node-fetch": "^2.6.0",
-    "tailwindcss": "^1.4.5"
+    "tailwindcss": "^1.4.5",
+    "tailwindcss-dark-mode": "^1.1.4"
   }
 }
