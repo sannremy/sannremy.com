@@ -1,13 +1,12 @@
 {
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "access-control-allow-origin",
-          "value": "https://api.amplitude.com"
-        }
-      ]
+      "src": "/(.*)",
+      "methods": ["POST", "GET"],
+      "headers": {
+        "key": "access-control-allow-origin",
+        "value": "https://api.amplitude.com"
+      }
     }
   ]
 }
