@@ -8,7 +8,8 @@ if (typeof window !== 'undefined' && process.env.AMPLITUDE_KEY) {
   amplitudeClient = amplitude.getInstance()
   amplitudeClient.init(process.env.AMPLITUDE_KEY, '', {
     includeReferrer: true,
-    includeUtm: true
+    cookieName: 't',
+    cookieSameSite: 'Lax'
   })
 }
 
