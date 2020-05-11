@@ -11,8 +11,10 @@ export const config = {
 export default (req, res) => {
   let success = false
 
+  // Event type
   const event_type = req.body.event_type
 
+  // User ID
   let user_id = req.cookies.uid
   if (!user_id) {
     user_id = uuidv4()
@@ -22,13 +24,17 @@ export default (req, res) => {
     ]);
   }
 
+  // IP address
+  const ip = req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'] : null
+
   if (req.method === 'POST' && event_type) {
     const data = JSON.stringify({
       api_key: process.env.AMPLITUDE_KEY,
       events: [
         {
           user_id,
-          event_type
+          event_type,
+          ip,
         }
       ]
     })
