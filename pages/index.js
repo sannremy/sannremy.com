@@ -75,10 +75,27 @@ export default class Home extends React.Component {
   }
 
   render() {
+    const title = `Sann-Remy Chea - Software Engineer`
+    const description = `Sann-Remy Chea is a seasoned Software Engineer, located in Paris, France. He has been working in the video games industry for more than 8 years.`
     return (
       <div className="max-w-md mx-auto w-full text-gray-800 dark:text-gray-400 p-5 transition-colors duration-150 ease-in-out">
         <Head>
-          <title>Sann-Remy Chea - Software Engineer</title>
+          <title>{title}</title>
+          <meta name="title" content={title} />
+          <meta name="description" content={description} />
+
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://src.onl" />
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:image" content="/social.png" />
+
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:url" content="https://src.onl" />
+          <meta property="twitter:title" content={title} />
+          <meta property="twitter:description" content={description} />
+          <meta property="twitter:image" content="/social.png" />
+
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
