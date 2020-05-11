@@ -22,6 +22,11 @@ export default class Home extends React.Component {
   componentDidMount() {
     this.handleTracking(null, 'page-view')
 
+    const referrer = document.referrer === '' ? 'none' : document.referrer
+    if (document.referrer !== '') {
+      this.handleTracking(null, 'referrer-' + referrer)
+    }
+
     // Check if dark mode is enabled
     if (this.state.darkMode) {
       this.switchDarkMode(null, this.state.darkMode)
