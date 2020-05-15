@@ -14,6 +14,17 @@ export default (req, res) => {
   // Event type
   const event_type = req.body.event_type
 
+  if (typeof event_type !== 'string') {
+    res.status(200).json({ success })
+  }
+
+  // Event properties
+  const event_properties = req.body.event_properties
+
+  if (typeof event_properties !== 'object') {
+    res.status(200).json({ success })
+  }
+
   // User ID
   let user_id = req.cookies.uid
   if (!user_id) {
@@ -34,6 +45,7 @@ export default (req, res) => {
         {
           user_id,
           event_type,
+          event_properties,
           ip,
         }
       ]
