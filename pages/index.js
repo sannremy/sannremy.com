@@ -106,10 +106,17 @@ export default class Home extends React.Component {
         </Head>
 
         <main>
-          <div className="flex item-center justify-center flex-col">
-            <span onClick={this.switchDarkMode} className="block w-32 mx-auto border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full p-1">
-              <img className="w-full rounded-full dark:opacity-90" src="/sann-remy-chea.jpg" />
-            </span>
+          <div className="flex items-center justify-center flex-col">
+            <div className="relative">
+              <div onClick={this.switchDarkMode} className="w-32 mx-auto border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full p-1">
+                <img className="w-full rounded-full dark:opacity-90" src="/sann-remy-chea.jpg" />
+              </div>
+              <div title="Ask Me Anything" className="absolute flex items-center w-6 bottom-0 right-0 h-6 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full mr-4" style={{
+                padding: '5px',
+              }}>
+                <svg className="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 12h-2v-2h2v2zm0-4h-2V6h2v4z"></path></svg>
+              </div>
+            </div>
             <h1 className="mt-3 font-semibold text-xl text-center">Sann-Remy Chea</h1>
             <h2 className="mt-1 text-base text-center text-gray-600 dark:text-gray-600">Software Engineer</h2>
           </div>
