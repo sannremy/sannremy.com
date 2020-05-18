@@ -10,7 +10,8 @@ export default class Home extends React.Component {
       typeof window !== 'undefined'
       && window.matchMedia
       && window.matchMedia('(prefers-color-scheme: dark)').matches
-    )
+    ),
+    ama: false,
   }
 
   constructor(props) {
@@ -18,6 +19,7 @@ export default class Home extends React.Component {
 
     this.handleTracking = this.handleTracking.bind(this)
     this.switchDarkMode = this.switchDarkMode.bind(this)
+    this.switchAMA = this.switchAMA.bind(this)
   }
 
   componentDidMount() {
@@ -56,6 +58,24 @@ export default class Home extends React.Component {
     }
   }
 
+  switchAMA(event) {
+    if (event) {
+      event.preventDefault()
+    }
+
+    const ama = !this.state.ama
+
+    this.setState({
+      ama
+    })
+
+    if (typeof window !== 'undefined') {
+      this.handleTracking(event, 'ama', {
+        state: ama ? 'on' : 'off',
+      })
+    }
+  }
+
   handleTracking(event, eventType, eventProperties = {}) {
     let href = null
     if (event) {
@@ -82,8 +102,13 @@ export default class Home extends React.Component {
   }
 
   render() {
+    const {
+      ama,
+    } = this.state
+
     const title = `Sann-Remy Chea - Software Engineer`
     const description = `Sann-Remy Chea is a seasoned Software Engineer, located in Paris, France. He has been working in the video games industry for more than 8 years.`
+
     return (
       <div className="max-w-md mx-auto w-full text-gray-800 dark:text-gray-400 p-5 transition-colors duration-150 ease-in-out">
         <Head>
@@ -108,14 +133,19 @@ export default class Home extends React.Component {
 
         <main>
           <div className="flex items-center justify-center flex-col">
+            {/* Action bar */}
             <div className="flex items-center justify-end w-full mb-1">
-              <div title="Ask Me Anything" className="flex items-center w-6 h-6 p-1 mr-1 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
-                <AMA/>
+              <div title="Ask Me Anything" onClick={this.switchAMA} className="flex items-center w-6 h-6 p-1 mr-1 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
+                <svg className="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"></path></svg>
               </div>
               <div title="Dark mode" onClick={this.switchDarkMode} className="flex items-center w-6 h-6 p-1 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
                 <svg className="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"></path></svg>
               </div>
             </div>
+
+            <AMA isOpened={ama} />
+
+            {/* Picture + Name + Role */}
             <Link href="/">
               <a className="block w-32 mx-auto border border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 transition-colors duration-150 ease-in-out rounded-full p-1">
                 <img className="w-full rounded-full dark:opacity-90" src="/sann-remy-chea.jpg" />
@@ -124,11 +154,14 @@ export default class Home extends React.Component {
             <h1 className="mt-3 font-semibold text-xl text-center">Sann-Remy Chea</h1>
             <h2 className="mt-1 text-base text-center text-gray-600 dark:text-gray-600">Software Engineer</h2>
           </div>
+
+          {/* Description */}
           <p className="mt-10 text-sm">
             Working for Activision Blizzard, I&nbsp;create Web &amp; Mobile apps, I&nbsp;also mentor developers. Located in the Paris area in France, I&nbsp;speak English and French.
           </p>
         </main>
 
+        {/* Social links */}
         <footer>
           <ul className="mt-10 mx-auto w-full flex items-center justify-between" style={{
             maxWidth: '260px',
