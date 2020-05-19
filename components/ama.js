@@ -20,7 +20,7 @@ export default class AMA extends React.Component {
 
     return (
       <div className={isOpened ? 'block' : 'hide'}>
-        lk
+        <textarea placeholder="Ask Me Anything" />
       </div>
     )
   }

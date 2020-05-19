@@ -3,23 +3,16 @@ import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import AMA from '../components/ama'
+import { connect } from 'react-redux'
+import { toggleDarkMode } from '../actions'
 
-export default class Home extends React.Component {
-  state = {
-    darkMode: (
-      typeof window !== 'undefined'
-      && window.matchMedia
-      && window.matchMedia('(prefers-color-scheme: dark)').matches
-    ),
-    ama: false,
-  }
-
+class Home extends React.Component {
   constructor(props) {
     super(props)
 
     this.handleTracking = this.handleTracking.bind(this)
-    this.switchDarkMode = this.switchDarkMode.bind(this)
-    this.switchAMA = this.switchAMA.bind(this)
+    this.handleDarkMode = this.handleDarkMode.bind(this)
+    // this.switchAMA = this.switchAMA.bind(this)
   }
 
   componentDidMount() {
@@ -29,23 +22,25 @@ export default class Home extends React.Component {
     })
 
     // Check if dark mode is enabled
-    if (this.state.darkMode) {
-      this.switchDarkMode(null, this.state.darkMode)
-    }
+    // if (this.props.darkMode) {
+    //   this.switchDarkMode(null, this.props.darkMode)
+    // }
   }
 
-  switchDarkMode(event, force = false) {
+  handleDarkMode(event) {
     if (event) {
       event.preventDefault()
     }
 
-    const darkMode = force || !this.state.darkMode
+    this.props.dispatch(toggleDarkMode())
+  }
 
-    this.setState({
-      darkMode
-    })
+  componentDidUpdate(prevProps) {
+    const {
+      darkMode,
+    } = this.props
 
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && prevProps.darkMode !== darkMode) {
       if (darkMode) {
         document.documentElement.classList.add('mode-dark')
       } else {
@@ -58,23 +53,23 @@ export default class Home extends React.Component {
     }
   }
 
-  switchAMA(event) {
-    if (event) {
-      event.preventDefault()
-    }
+  // switchAMA(event) {
+  //   if (event) {
+  //     event.preventDefault()
+  //   }
 
-    const ama = !this.state.ama
+  //   const ama = !this.state.ama
 
-    this.setState({
-      ama
-    })
+  //   this.setState({
+  //     ama
+  //   })
 
-    if (typeof window !== 'undefined') {
-      this.handleTracking(event, 'ama', {
-        state: ama ? 'on' : 'off',
-      })
-    }
-  }
+  //   if (typeof window !== 'undefined') {
+  //     this.handleTracking(event, 'ama', {
+  //       state: ama ? 'on' : 'off',
+  //     })
+  //   }
+  // }
 
   handleTracking(event, eventType, eventProperties = {}) {
     let href = null
@@ -102,10 +97,6 @@ export default class Home extends React.Component {
   }
 
   render() {
-    const {
-      ama,
-    } = this.state
-
     const title = `Sann-Remy Chea - Software Engineer`
     const description = `Sann-Remy Chea is a seasoned Software Engineer, located in Paris, France. He has been working in the video games industry for more than 8 years.`
 
@@ -138,12 +129,12 @@ export default class Home extends React.Component {
               <div title="Ask Me Anything" onClick={this.switchAMA} className="flex items-center w-6 h-6 p-1 mr-1 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
                 <svg className="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"></path></svg>
               </div>
-              <div title="Dark mode" onClick={this.switchDarkMode} className="flex items-center w-6 h-6 p-1 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
+              <div title="Dark mode" onClick={this.handleDarkMode} className="flex items-center w-6 h-6 p-1 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
                 <svg className="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.79 1.42-1.41zM4 10.5H1v2h3v-2zm9-9.95h-2V3.5h2V.55zm7.45 3.91l-1.41-1.41-1.79 1.79 1.41 1.41 1.79-1.79zm-3.21 13.7l1.79 1.8 1.41-1.41-1.8-1.79-1.4 1.4zM20 10.5v2h3v-2h-3zm-8-5c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm-1 16.95h2V19.5h-2v2.95zm-7.45-3.91l1.41 1.41 1.79-1.8-1.41-1.41-1.79 1.8z"></path></svg>
               </div>
             </div>
 
-            <AMA isOpened={ama} />
+            {/* <AMA isOpened={ama} /> */}
 
             {/* Picture + Name + Role */}
             <Link href="/">
@@ -187,3 +178,13 @@ export default class Home extends React.Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  darkMode: state.darkMode || (
+    typeof window !== 'undefined'
+    && window.matchMedia
+    && window.matchMedia('(prefers-color-scheme: dark)').matches
+  )
+})
+
+export default connect(mapStateToProps)(Home)
