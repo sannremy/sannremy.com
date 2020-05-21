@@ -10,19 +10,15 @@ export const config = {
 
 export default (req, res) => {
   let success = false
+  let httpCode = 400
 
-  // Event type
-  const event_type = req.body.event_type
+  // Events
+  const events = req.body.events
 
-  if (typeof event_type !== 'string') {
-    res.status(200).json({ success })
-  }
-
-  // Event properties
-  const event_properties = req.body.event_properties
-
-  if (typeof event_properties !== 'object') {
-    res.status(200).json({ success })
+  // Check if array
+  if (!Array.isArray(events) && events.length > 0) {
+    res.status(httpCode).json({ success })
+    return
   }
 
   // User ID
@@ -38,17 +34,30 @@ export default (req, res) => {
   // IP address
   const ip = req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'] : null
 
-  if (req.method === 'POST' && event_type) {
+  // Check event_type and event_properties
+  for (let i = 0; i < events.length; i++) {
+    const event = events[i]
+    if (!event.hasOwnProperty('event_type')) {
+      res.status(httpCode).json({ success })
+      return
+    }
+
+    if (
+      event.hasOwnProperty('event_properties')
+      && typeof event.event_properties !== 'object'
+    ) {
+      res.status(httpCode).json({ success })
+      return
+    }
+
+    event.user_id = user_id
+    event.ip = ip
+  }
+
+  if (req.method === 'POST') {
     const data = JSON.stringify({
       api_key: process.env.AMPLITUDE_KEY,
-      events: [
-        {
-          user_id,
-          event_type,
-          event_properties,
-          ip,
-        }
-      ]
+      events,
     })
 
     const req = https.request({
@@ -64,6 +73,7 @@ export default (req, res) => {
     req.write(data);
     req.end();
 
+    httpCode = 200
     success = true
   }
 

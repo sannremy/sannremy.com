@@ -20,21 +20,42 @@ export const toggleAMA = () => ({
 /**
  * Tracking
  */
-export const sendTracking = ({ eventType, eventProperties, href }) => {
-  fetch('/api/amplitude', {
-    method: 'post',
-    body: JSON.stringify({
-      event_type: eventType,
-      event_properties: eventProperties,
-    }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).finally(() => {
-    if (href) {
-      window.location.href = href
-    }
-  })
+const addTracking = ({ eventType, eventProperties, href }) => ({
+  type: 'ADD_TRACKING',
+  eventType,
+  eventProperties,
+  href,
+})
 
-  return { type: null };
+const resetTracking = () => ({
+  type: 'RESET_TRACKING',
+})
+
+const shouldSendTracking = (state, { href }) => {
+  return href !== null || state.events.length > 5
+}
+
+export const sendTracking = ({ eventType, eventProperties, href }) => {
+  return (dispatch, getState) => {
+    dispatch(addTracking({ eventType, eventProperties, href }))
+
+    if (shouldSendTracking(getState(), { href })) {
+      return fetch('/api/amplitude', {
+        method: 'post',
+        body: JSON.stringify({
+          event_type: eventType,
+          event_properties: eventProperties,
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).finally(() => {
+        dispatch(resetTracking())
+
+        if (href) {
+          window.location.href = href
+        }
+      })
+    }
+  }
 }
