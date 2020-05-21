@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import AMA from '../components/ama'
 import { connect } from 'react-redux'
-import { toggleDarkMode } from '../actions'
+import { toggleDarkMode, toggleAMA, sendTracking } from '../actions'
 
 class Home extends React.Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Home extends React.Component {
 
     this.handleTracking = this.handleTracking.bind(this)
     this.handleDarkMode = this.handleDarkMode.bind(this)
-    // this.switchAMA = this.switchAMA.bind(this)
+    this.handleAMA = this.handleAMA.bind(this)
   }
 
   componentDidMount() {
@@ -21,18 +21,7 @@ class Home extends React.Component {
       url: referrer,
     })
 
-    // Check if dark mode is enabled
-    // if (this.props.darkMode) {
-    //   this.switchDarkMode(null, this.props.darkMode)
-    // }
-  }
-
-  handleDarkMode(event) {
-    if (event) {
-      event.preventDefault()
-    }
-
-    this.props.dispatch(toggleDarkMode())
+    this.setDarkMode(this.props.darkMode)
   }
 
   componentDidUpdate(prevProps) {
@@ -40,36 +29,42 @@ class Home extends React.Component {
       darkMode,
     } = this.props
 
-    if (typeof window !== 'undefined' && prevProps.darkMode !== darkMode) {
-      if (darkMode) {
+    if (prevProps.darkMode.enabled !== darkMode.enabled) {
+      this.setDarkMode(darkMode)
+    }
+  }
+
+  handleDarkMode() {
+    this.props.dispatch(toggleDarkMode())
+  }
+
+  setDarkMode(darkMode) {
+    if (typeof window !== 'undefined') {
+      if (darkMode.enabled) {
         document.documentElement.classList.add('mode-dark')
       } else {
         document.documentElement.classList.remove('mode-dark')
       }
 
-      this.handleTracking(event, 'dark-mode', {
-        state: darkMode ? 'on' : 'off',
+      this.handleTracking(null, 'dark-mode', {
+        state: darkMode.enabled ? 'on' : 'off',
       })
     }
   }
 
-  // switchAMA(event) {
-  //   if (event) {
-  //     event.preventDefault()
-  //   }
+  handleAMA() {
+    this.props.dispatch(toggleAMA())
 
-  //   const ama = !this.state.ama
+    const {
+      AMA,
+    } = this.props
 
-  //   this.setState({
-  //     ama
-  //   })
-
-  //   if (typeof window !== 'undefined') {
-  //     this.handleTracking(event, 'ama', {
-  //       state: ama ? 'on' : 'off',
-  //     })
-  //   }
-  // }
+    if (typeof window !== 'undefined') {
+      this.handleTracking(null, 'ama', {
+        state: AMA.isOpened ? 'on' : 'off',
+      })
+    }
+  }
 
   handleTracking(event, eventType, eventProperties = {}) {
     let href = null
@@ -78,22 +73,11 @@ class Home extends React.Component {
       href = event.currentTarget.href
     }
 
-    ((href) => {
-      fetch('/api/amplitude', {
-        method: 'post',
-        body: JSON.stringify({
-          event_type: eventType,
-          event_properties: eventProperties,
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }).finally(() => {
-        if (href) {
-          window.location.href = href
-        }
-      })
-    })(href)
+    this.props.dispatch(sendTracking({
+      eventType,
+      eventProperties,
+      href,
+    }))
   }
 
   render() {
@@ -126,7 +110,7 @@ class Home extends React.Component {
           <div className="flex items-center justify-center flex-col">
             {/* Action bar */}
             <div className="flex items-center justify-end w-full mb-1">
-              <div title="Ask Me Anything" onClick={this.switchAMA} className="flex items-center w-6 h-6 p-1 mr-1 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
+              <div title="Ask Me Anything" onClick={this.handleAMA} className="flex items-center w-6 h-6 p-1 mr-1 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
                 <svg className="w-full fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"></path></svg>
               </div>
               <div title="Dark mode" onClick={this.handleDarkMode} className="flex items-center w-6 h-6 p-1 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
@@ -179,12 +163,11 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  darkMode: state.darkMode || (
-    typeof window !== 'undefined'
-    && window.matchMedia
-    && window.matchMedia('(prefers-color-scheme: dark)').matches
-  )
-})
+const mapStateToProps = state => {
+  return {
+      darkMode: state.DarkMode,
+      AMA: state.AMA,
+  }
+}
 
 export default connect(mapStateToProps)(Home)
