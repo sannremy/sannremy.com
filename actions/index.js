@@ -6,18 +6,6 @@ export const toggleDarkMode = () => ({
 })
 
 /**
- * AMA
- */
-export const addAMAMessage = ({ message }) => ({
-  type: 'ADD_MESSAGE',
-  message,
-})
-
-export const toggleAMA = () => ({
-  type: 'TOGGLE_AMA',
-})
-
-/**
  * Tracking
  */
 const addTracking = ({ eventType, eventProperties, href }) => ({
