@@ -28,7 +28,7 @@ export default (req, res) => {
 
     res.setHeader('Set-Cookie', [
       `uid=${user_id}; HttpOnly; SameSite=Strict; Domain=src.onl; Secure;`
-    ]);
+    ])
   }
 
   // IP address
@@ -68,14 +68,14 @@ export default (req, res) => {
         'Content-Type':'application/json',
         'Accept':'*/*'
       }
-    });
+    })
 
-    req.write(data);
-    req.end();
+    req.write(data)
+    req.end()
 
     httpCode = 200
     success = true
   }
 
-  res.status(200).json({ success })
+  res.status(httpCode).json({ success })
 }

@@ -4,7 +4,7 @@ const Tracking = (state = {
 ) => {
   switch (action.type) {
     case 'ADD_TRACKING':
-      const eventsToAdd = [...state.events];
+      const eventsToAdd = [...state.events]
       eventsToAdd.push({
         event_type: action.eventType,
         event_properties: action.eventProperties,

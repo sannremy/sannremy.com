@@ -32,19 +32,19 @@ const resetTracking = () => ({
 })
 
 const shouldSendTracking = (state, { href }) => {
-  return href !== null || state.events.length > 5
+  return href !== null || state.events.length >= 5
 }
 
 export const sendTracking = ({ eventType, eventProperties, href }) => {
   return (dispatch, getState) => {
     dispatch(addTracking({ eventType, eventProperties, href }))
 
-    if (shouldSendTracking(getState(), { href })) {
+    const tracking = getState().Tracking
+    if (shouldSendTracking(tracking, { href })) {
       return fetch('/api/amplitude', {
         method: 'post',
         body: JSON.stringify({
-          event_type: eventType,
-          event_properties: eventProperties,
+          events: tracking.events,
         }),
         headers: {
           'Content-Type': 'application/json'
