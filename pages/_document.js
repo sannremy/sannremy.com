@@ -13,6 +13,7 @@ class AppDocument extends Document {
         <body className="bg-white dark:bg-gray-900">
           <Main />
           <NextScript />
+          <script data-goatcounter="https://src-onl.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
         </body>
       </Html>
     )
