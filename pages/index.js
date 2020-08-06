@@ -82,7 +82,7 @@ class Home extends React.Component {
               </a>
             </Link>
             <h1 className="mt-3 font-semibold text-xl text-center">Sann-Remy Chea</h1>
-            <h2 className="mt-1 text-base text-center text-gray-600 dark:text-gray-600">Senior Front-end Engineer</h2>
+            <h2 className="text-base text-center text-gray-600 dark:text-gray-600">Senior Front-end Engineer</h2>
           </div>
 
           {/* Description */}
