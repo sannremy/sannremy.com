@@ -8,17 +8,17 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "^9.3.6",
+    "next": "^9.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
+    "react-redux": "^7.2.1",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.2.0",
-    "autoprefixer": "^9.7.6",
-    "tailwindcss": "^1.4.5",
-    "tailwindcss-dark-mode": "^1.1.4"
+    "@fullhuman/postcss-purgecss": "^2.3.0",
+    "autoprefixer": "^9.8.6",
+    "tailwindcss": "^1.6.2",
+    "tailwindcss-dark-mode": "^1.1.6"
   }
 }
