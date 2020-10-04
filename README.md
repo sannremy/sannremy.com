@@ -1,7 +1,7 @@
 # Personal website
 
 ## Production version
-Production version at: https://src.onl
+Production version at: https://sannremy.com
 
 ## Installation
 Install dependencies:
