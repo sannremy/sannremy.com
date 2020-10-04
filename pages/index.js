@@ -1,4 +1,3 @@
-import fetch from 'node-fetch'
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -13,7 +12,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.setDarkMode(this.props.darkMode)
+    this.setDarkMode(this.props.darkMode, 'auto')
   }
 
   componentDidUpdate(prevProps) {
@@ -30,12 +29,20 @@ class Home extends React.Component {
     this.props.dispatch(toggleDarkMode())
   }
 
-  setDarkMode(darkMode) {
+  setDarkMode(darkMode, action = 'click') {
     if (typeof window !== 'undefined') {
       if (darkMode.enabled) {
         document.documentElement.classList.add('mode-dark')
       } else {
         document.documentElement.classList.remove('mode-dark')
+      }
+
+      if (action === 'click') {
+        window.gtag('event', action, {
+          'event_category': 'ui',
+          'event_label': 'dark mode',
+          'value': darkMode.enabled ? 'enabled' : 'disabled'
+        })
       }
     }
   }
@@ -77,7 +84,7 @@ class Home extends React.Component {
 
             {/* Picture + Name + Role */}
             <Link href="/">
-              <a className="block w-32 mx-auto border border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 transition-colors duration-150 ease-in-out rounded-full p-1">
+              <a className="cursor-default block w-32 mx-auto border border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 transition-colors duration-150 ease-in-out rounded-full p-1">
                 <img className="w-full rounded-full dark:opacity-90" src="/sann-remy-chea.jpg" />
               </a>
             </Link>
