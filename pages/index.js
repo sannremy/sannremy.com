@@ -48,8 +48,8 @@ class Home extends React.Component {
   }
 
   render() {
-    const title = `Sann-Remy Chea - Senior Front-end Engineer`
-    const description = `Sann-Remy Chea is a seasoned Front-end Engineer, located in Paris, France. He has been working in the video games industry for more than 8 years.`
+    const title = `Sann-Remy - Senior Front-end Engineer`
+    const description = `Sann-Remy is a seasoned Front-end Engineer, located in Paris, France. He has been working in the video games industry for more than 8 years.`
 
     return (
       <div className="max-w-md mx-auto w-full text-gray-800 dark:text-gray-400 p-5 transition-colors duration-150 ease-in-out">
@@ -85,10 +85,10 @@ class Home extends React.Component {
             {/* Picture + Name + Role */}
             <Link href="/">
               <a className="cursor-default block w-32 mx-auto border border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 transition-colors duration-150 ease-in-out rounded-full p-1">
-                <img className="w-full rounded-full dark:opacity-90" src="/sann-remy-chea.jpg" />
+                <img className="w-full rounded-full dark:opacity-90" src="/sann-remy.jpg" />
               </a>
             </Link>
-            <h1 className="mt-3 font-semibold text-xl text-center">Sann-Remy Chea</h1>
+            <h1 className="mt-3 font-semibold text-xl text-center">Sann-Remy</h1>
             <h2 className="text-base text-center text-gray-600 dark:text-gray-600">Senior Front-end Engineer</h2>
           </div>
 
