@@ -1,16 +1,19 @@
 import '../styles.css'
 
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from '../reducers'
-
-const store = createStore(rootReducer, applyMiddleware(thunk))
+import { IntlProvider } from 'react-intl'
+import { useRouter } from 'next/router'
+import enMessages from '../locales/en.json'
+import frMessages from '../locales/fr.json'
 
 // This default export is required in a new `pages/_app.js` file.
 export default function App({ Component, pageProps }) {
   // Init GA
   if (typeof window !== 'undefined') {
+    window.dataLayer = window.dataLayer || []
+    window.gtag = () => {
+      dataLayer.push(arguments)
+    }
+
     const initUid = () => Math.random().toString(36).substr(2, 9)
     let uid = null
 
@@ -38,9 +41,16 @@ export default function App({ Component, pageProps }) {
     // End of GA
   }
 
+  const {
+    locale,
+    defaultLocale,
+  } = useRouter()
+
+  const messages = locale === 'fr' ? frMessages : enMessages
+
   return (
-    <Provider store={store}>
+    <IntlProvider locale={locale} defaultLocale={defaultLocale} messages={messages}>
       <Component {...pageProps} />
-    </Provider>
+    </IntlProvider>
   )
 }
