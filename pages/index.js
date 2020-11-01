@@ -136,12 +136,12 @@ export default function Home() {
           </div>
 
           {/* Picture + Name + Role */}
-          <div className="cursor-default block w-32 mx-auto border border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 transition-colors duration-150 ease-in-out rounded-full p-1">
+          <div className="cursor-default block w-40 mx-auto border border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 transition-colors duration-150 ease-in-out rounded-full p-1">
             <Image
               className="w-full rounded-full dark:opacity-90 bg-gray-300"
               src="/sann-remy.jpg"
-              width={118}
-              height={118}
+              width={160}
+              height={160}
             />
           </div>
           <h1 className="mt-3 font-semibold text-2xl text-center">
