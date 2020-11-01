@@ -10,7 +10,7 @@ export default function Home() {
     typeof window !== 'undefined'
     && window.matchMedia
     && window.matchMedia('(prefers-color-scheme: dark)').matches
-  );
+  )
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -26,13 +26,21 @@ export default function Home() {
         'value': isDarkMode ? 'enabled' : 'disabled'
       })
     }
-  }, [isDarkMode]);
-
-  const t = key => key
+  }, [isDarkMode])
 
   const {
     locale,
   } = useRouter()
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.gtag('event', 'click', {
+        'event_category': 'ui',
+        'event_label': 'locale',
+        'value': locale
+      })
+    }
+  }, [locale])
 
   const intl = useIntl()
 
@@ -136,13 +144,13 @@ export default function Home() {
               height={118}
             />
           </div>
-          <h1 className="mt-3 font-semibold text-xl text-center">
+          <h1 className="mt-3 font-semibold text-2xl text-center">
             <FormattedMessage
               id="sannremy"
               defaultMessage=""
             />
           </h1>
-          <h2 className="text-center text-gray-600 dark:text-gray-600">
+          <h2 className="text-center text-lg text-gray-600 dark:text-gray-600">
             <FormattedMessage
               id="tagline"
               defaultMessage=""
