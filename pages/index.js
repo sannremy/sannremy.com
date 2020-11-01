@@ -50,8 +50,27 @@ export default function Home() {
     defaultMessage: "",
   })
 
+  const descriptions = {
+    'experience': (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    ),
+    'skills': (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      </svg>
+    ),
+    'location': (
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+  }
+
   return (
-    <div className="max-w-md mx-auto w-full text-gray-800 dark:text-gray-400 p-5 transition-colors duration-150 ease-in-out">
+    <div className="max-w-md mx-auto w-full text-base text-gray-800 dark:text-gray-400 p-5 transition-colors duration-150 ease-in-out">
       <Head>
         <title>{title}</title>
         <meta name="title" content={title} />
@@ -78,12 +97,12 @@ export default function Home() {
           <div className="flex items-center justify-end w-full mb-1">
             <div title="Dark mode" onClick={() => setDarkMode(!isDarkMode)} className="mr-1 flex items-center w-6 h-6 p-1 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
               {isDarkMode && (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                 </svg>
               )}
               {!isDarkMode && (
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
                 </svg>
               )}
@@ -92,10 +111,10 @@ export default function Home() {
               href="/"
               locale={locale === 'en' ? 'fr' : 'en'}
             >
-              <span className="block text-xs flex items-center h-6 pr-2 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
+              <span className="block text-xs flex items-center h-6 pl-1 pr-2 border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 cursor-pointer transition-colors duration-150 ease-in-out rounded-full">
                 <span className="block w-6 h-6 p-1">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
                   </svg>
                 </span>
                 <span>
@@ -123,7 +142,7 @@ export default function Home() {
               defaultMessage=""
             />
           </h1>
-          <h2 className="text-base text-center text-gray-600 dark:text-gray-600">
+          <h2 className="text-center text-gray-600 dark:text-gray-600">
             <FormattedMessage
               id="tagline"
               defaultMessage=""
@@ -132,28 +151,18 @@ export default function Home() {
         </div>
 
         {/* Description */}
-        <div className="mt-10 text-sm">
-          <p>
-            <FormattedMessage
-              id="introduction-1"
-              defaultMessage=""
-            />
-          </p>
-          <p>
-            <FormattedMessage
-              id="introduction-2"
-              defaultMessage=""
-            />
-          </p>
-          <p className="mt-2 flex items-center">
-            <span>hello</span>
-            <span className="w-4 h-4">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
-              </svg>
-            </span>
-            <span>sannremy.com</span>
-          </p>
+        <div className="mt-10">
+          {Object.entries(descriptions).map(([locKey, icon], i) => (
+            <div key={i} className="flex items-start mt-3">
+              <div className="flex-none w-6 mr-3">{icon}</div>
+              <div className="flex-grow">
+                <FormattedMessage
+                  id={locKey}
+                  defaultMessage=""
+                />
+              </div>
+            </div>
+          ))}
         </div>
       </main>
 
@@ -178,6 +187,16 @@ export default function Home() {
             </a>
           </li>
         </ul>
+
+        <p className="text-xs text-gray-600 flex items-center justify-center mt-5">
+          <span>hello</span>
+          <span className="w-3 h-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+            </svg>
+          </span>
+          <span>sannremy.com</span>
+        </p>
       </footer>
     </div>
   )

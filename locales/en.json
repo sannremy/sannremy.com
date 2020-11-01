@@ -5,6 +5,7 @@
   "title": "Sann-Remy - Senior Front-end Engineer",
   "description": "Sann-Remy is a seasoned Front-end Engineer, located in Paris, France. He has been working in the video games industry, as a professional, for more than 9 years.",
   "tagline": "Senior Front-end Engineer",
-  "introduction-1": "Experienced contributor to leading Video Game companies.",
-  "introduction-2": "I am specialised in UI, Node.js and AWS."
+  "experience": "Experienced contributor to leading Video Game companies.",
+  "skills": "Specialised in UI, Node.js and AWS.",
+  "location": "Based in Paris, France."
 }
