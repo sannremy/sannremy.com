@@ -154,6 +154,8 @@ export default function Home() {
           {/* Picture + Name + Role */}
           <div className="cursor-default block w-40 mx-auto border border border-gray-300 dark:border-gray-700 hover:border-gray-700 dark-hover:border-gray-500 transition-colors duration-150 ease-in-out rounded-full p-1">
             <Image
+              priority={true}
+              loading="eager"
               className="w-full rounded-full dark:opacity-90 text-gray-300 bg-gray-300"
               src="/sann-remy.jpg"
               width={160}
