@@ -6,6 +6,6 @@ module.exports = {
     defaultLocale: 'en',
   },
   env: {
-    UA: 'UA-179582578-1',
+    UA: null,
   },
 }

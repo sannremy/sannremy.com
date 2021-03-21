@@ -7,7 +7,9 @@ class AppDocument extends Document {
         <Head />
         <body className="font-sans bg-white dark:bg-gray-900">
           <Main />
-          <script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.UA}`} />
+          {process.env.UA && (
+            <script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.UA}`} />
+          )}
           <NextScript />
         </body>
       </Html>
