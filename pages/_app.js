@@ -18,12 +18,18 @@ function App({ Component, pageProps }) {
       const script = document.createElement('script')
       script.async = true
       script.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_ID}`
+      script.onload = function () {
+        window.dataLayer = window.dataLayer || []
 
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        function gtag() {
+          dataLayer.push(arguments)
+        }
 
-      gtag('config', process.env.GA_ID);
+        gtag('js', new Date())
+        gtag('config', process.env.GA_ID)
+      }
+
+      document.getElementsByTagName('head')[0].appendChild(script)
     }
   }
 
