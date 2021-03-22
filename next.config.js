@@ -6,6 +6,6 @@ module.exports = {
     defaultLocale: 'en',
   },
   env: {
-    UA: null,
+    GA_ID: 'G-PSPJ2N5PFQ',
   },
 }
