@@ -4,28 +4,28 @@ import '../styles/globals.css'
 import { appWithTranslation } from 'next-i18next'
 
 function App({ Component, pageProps }) {
-  if (typeof window !== 'undefined') {
-    // Dark mode
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark')
-      localStorage.theme = 'dark'
-    } else {
-      localStorage.theme = 'light'
-    }
+  // if (typeof window !== 'undefined') {
+  //   // Dark mode
+  //   if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+  //     document.documentElement.classList.add('dark')
+  //     localStorage.theme = 'dark'
+  //   } else {
+  //     localStorage.theme = 'light'
+  //   }
 
-    // Init GA
-    if (process.env.GA_ID) {
-      const script = document.createElement('script')
-      script.async = true
-      script.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_ID}`
+  //   // Init GA
+  //   if (process.env.GA_ID) {
+  //     const script = document.createElement('script')
+  //     script.async = true
+  //     script.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_ID}`
 
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  //     window.dataLayer = window.dataLayer || [];
+  //     function gtag(){dataLayer.push(arguments);}
+  //     gtag('js', new Date());
 
-      gtag('config', process.env.GA_ID);
-    }
-  }
+  //     gtag('config', process.env.GA_ID);
+  //   }
+  // }
 
   return (
     <Component {...pageProps} />
