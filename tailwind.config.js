@@ -1,24 +1,19 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-  },
-  purge: false,
+  purge: [
+    './src/**/*.html',
+    './src/**/*.js',
+  ],
+  darkMode: 'class',
   theme: {
-    opacity: {
-      '0': '0',
-      '25': '.25',
-      '50': '.5',
-      '75': '.75',
-      '90': '.9',
+    extend: {},
+    colors: {
+      gray: colors.blueGray,
     }
   },
   variants: {
-    backgroundColor: ['hover', 'dark'],
-    textColor: ['hover', 'dark'],
-    borderColor: ['hover', 'dark', 'dark-hover'],
-    opacity: ['hover', 'dark'],
+    extend: {},
   },
-  plugins: [
-    require('tailwindcss-dark-mode')()
-  ]
+  plugins: [],
 }

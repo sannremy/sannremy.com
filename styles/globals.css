@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 16px;
+}
+
+:root {
+  --animate-duration: 500ms;
+  --animate-delay: 200ms;
+}
+
+.animate__animated.animate__flipInX {
+  --animate-duration: 1s;
+}

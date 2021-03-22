@@ -1,56 +1,35 @@
-import '../styles.css'
+import 'animate.css'
+import '../styles/globals.css'
 
-import { IntlProvider } from 'react-intl'
-import { useRouter } from 'next/router'
-import enMessages from '../locales/en.json'
-import frMessages from '../locales/fr.json'
+import { appWithTranslation } from 'next-i18next'
 
-// This default export is required in a new `pages/_app.js` file.
-export default function App({ Component, pageProps }) {
-  // Init GA
+function App({ Component, pageProps }) {
   if (typeof window !== 'undefined') {
-    window.dataLayer = window.dataLayer || []
-    window.gtag = () => {
-      dataLayer.push(arguments)
-    }
-
-    const initUid = () => Math.random().toString(36).substr(2, 9)
-    let uid = null
-
-    if (window.localStorage) {
-      uid = window.localStorage.getItem('uid')
-
-      if (!uid) {
-        uid = initUid()
-        window.localStorage.setItem('uid', uid)
-      }
+    // Dark mode
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark')
+      localStorage.theme = 'dark'
     } else {
-      uid = initUid()
+      localStorage.theme = 'light'
     }
 
-    // GA
-    window.gtag('js', new Date())
+    // Init GA
+    if (process.env.GA_ID) {
+      const script = document.createElement('script')
+      script.async = true
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.GA_ID}`
 
-    window.gtag('config', process.env.UA, {
-      'anonymize_ip': true,
-      'client_storage': 'none',
-      'client_id': uid,
-      'allow_google_signals': false,
-      'allow_ad_personalization_signals': false,
-    })
-    // End of GA
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', process.env.GA_ID);
+    }
   }
 
-  const {
-    locale,
-    defaultLocale,
-  } = useRouter()
-
-  const messages = locale === 'fr' ? frMessages : enMessages
-
   return (
-    <IntlProvider locale={locale} defaultLocale={defaultLocale} messages={messages}>
-      <Component {...pageProps} />
-    </IntlProvider>
+    <Component {...pageProps} />
   )
 }
+
+export default appWithTranslation(App)

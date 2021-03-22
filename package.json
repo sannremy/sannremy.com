@@ -8,16 +8,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "next": "^10.0.0",
+    "next-i18next": "^8.1.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-intl": "^5.8.8"
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^3.0.0",
-    "autoprefixer": "^10.0.1",
-    "postcss": "^8.1.4",
-    "tailwindcss": "^1.9.6",
-    "tailwindcss-dark-mode": "^1.1.7"
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.8",
+    "tailwindcss": "^2.0.4"
   }
 }
