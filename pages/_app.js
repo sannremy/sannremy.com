@@ -1,4 +1,6 @@
+import '@fontsource/muli'
 import 'animate.css'
+
 import '../styles/globals.css'
 
 import { appWithTranslation } from 'next-i18next'
