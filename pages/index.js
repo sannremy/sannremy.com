@@ -33,6 +33,31 @@ export default function Home() {
     setDarkMode(!isDarkMode)
   }
 
+  const replayAnimations = () => {
+    const animatedElements = document.querySelectorAll('.animate__animated')
+
+    animatedElements.forEach(element => {
+      const animatedClassNames = element.className
+        .split(' ')
+        .filter(className => {
+          if (className.indexOf('animate__') === 0) {
+            element.classList.remove(className)
+            return true
+          } else {
+            return false
+          }
+        })
+
+      element.setAttribute('data-animate-css', animatedClassNames.join(' '))
+    })
+
+    setTimeout(() => {
+      animatedElements.forEach(element => {
+        element.classList.add(...element.getAttribute('data-animate-css').split(' '))
+      })
+    }, 0)
+  }
+
   // Locales
   const {
     locale,
@@ -110,7 +135,7 @@ export default function Home() {
               href="/"
               locale={locale === 'en' ? 'fr' : 'en'}
             >
-              <span className="place-self-start block text-sm flex items-center px-2 py-1 opacity-75 bg-gray-200 dark:bg-gray-700 hover:opacity-100 rounded-full cursor-pointer transition-colors duration-150 ease-in-out">
+              <a className="place-self-start block text-sm flex items-center px-2 py-1 opacity-75 bg-gray-200 dark:bg-gray-700 hover:opacity-100 rounded-full cursor-pointer transition-colors duration-150 ease-in-out">
                 <span className="flex-none block w-4 mr-1">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
@@ -119,22 +144,29 @@ export default function Home() {
                 <span>
                   {t('localeText')}
                 </span>
-              </span>
+              </a>
             </Link>
           </div>
 
           {/* Picture + Name + Role */}
           <div className="animate__animated animate__zoomIn cursor-default inline-block w-40 h-40 mx-auto rounded-full">
-            <Image
-              priority={true}
-              loading="eager"
-              className="w-full rounded-full dark:opacity-90"
-              src="/sann-remy.jpg"
-              width={160}
-              height={160}
-              quality={100}
-              alt={t('sannremy')}
-            />
+            <Link
+              href="/"
+              locale={locale}
+            >
+              <a onClick={() => replayAnimations()}>
+                <Image
+                  priority={true}
+                  loading="eager"
+                  className="w-full rounded-full dark:opacity-90"
+                  src="/sann-remy.jpg"
+                  width={160}
+                  height={160}
+                  quality={100}
+                  alt={t('sannremy')}
+                />
+              </a>
+            </Link>
           </div>
           <h1 className="animate__animated animate__flipInX mt-3 font-semibold text-2xl text-center">
             {t('sannremy')}
