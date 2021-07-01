@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: sannremy.com
-Token: 62e36e5caa30d8a599593d86efe700b03b48f97a56abda84340c1a68821336bc
