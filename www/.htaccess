@@ -1,6 +1,0 @@
-# Locale starts with fr
-RewriteCond %{HTTP:Accept-Language} ^fr [NC]
-RewriteRule ^$ /fr/ [L,R=301]
-
-# Default locale
-RewriteRule ^$ /en/ [L,R=301]
