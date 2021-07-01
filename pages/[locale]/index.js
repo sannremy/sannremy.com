@@ -142,7 +142,7 @@ const Home = ({
               >
                 <a
                   onClick={() => replayAnimations()}
-                  className="opacity-90 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+                  className="block opacity-90 hover:opacity-100 transition-opacity duration-300 ease-in-out"
                 >
                   <img
                     loading="eager"
