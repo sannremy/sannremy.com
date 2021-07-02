@@ -8,4 +8,5 @@ RewriteRule ^(.*)$ https://sannremy.com/$1 [R=301,L]
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# Custom 404 page
 ErrorDocument 404 https://sannremy.com
