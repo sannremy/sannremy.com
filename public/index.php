@@ -1,5 +1,5 @@
 <?php
-  // Sort languages by quality
+  // Sort locales by quality
   $prefLocales = array_reduce(
     explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']),
     function ($res, $el) {
@@ -8,18 +8,23 @@
       return $res;
     }, []);
 
-  // Sort desc
+  // Sort quality desc
   arsort($prefLocales);
+
+  // Default locale = en
+  $clientLocale = "en";
 
   // Check if locales match with fr
   foreach ($prefLocales as $locale => $q) {
-    if (strtolower(substr($locale, 0, 2)) === "fr") {
-      header("Location: /fr/");
-      exit;
+    // Extract language
+    $lang = strtolower(substr($locale, 0, 2));
+
+    if ($lang === "fr" || $lang === "en") {
+      $clientLocale = $lang;
+      break;
     }
   }
 
-  // English by default
-  header("Location: /en/");
-  exit;
+  // Redirect to the right locale
+  header("Location: /".$clientLocale."/");
 ?>
