@@ -7,7 +7,7 @@ yarn build
 
 echo "Deploying sannremy.com..."
 lftp -u $FTP_USER,$FTP_PASSWORD $FTP_HOST << EOF
-mirror -R out/ /www/
+mirror -R -e out/ /www/
 bye
 EOF
 
