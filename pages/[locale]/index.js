@@ -147,7 +147,7 @@ const Home = ({
                   <img
                     loading="eager"
                     className="w-full h-full rounded-full"
-                    src="/sann-remy.jpg"
+                    src="/sann-remy-chea.jpg"
                     alt={t('sannremy')}
                   />
                 </a>
