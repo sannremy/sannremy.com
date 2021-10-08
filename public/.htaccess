@@ -1,3 +1,32 @@
+AddDefaultCharset UTF-8
+
+# Security headers
+Header always set Content-Security-Policy "upgrade-insecure-requests;"
+Header set Content-Security-Policy "default-src 'self'"
+Header set Strict-Transport-Security "max-age=31536000;includeSubDomains;"
+Header always set X-Frame-Options SAMEORIGIN
+Header set X-XSS-Protection "1; mode=block"
+Header set X-Content-Type-Options nosniff
+Header set Referrer-Policy no-referrer
+Header set Feature-Policy "microphone 'none';camera 'none';geolocation 'none';"
+Header set Permissions-Policy "microphone=(),camera=(),geolocation=()"
+
+# Content-type header
+<FilesMatch "\.(js)$">
+  <ifModule mod_headers.c>
+    Header set Content-Type "text/javascript"
+  </ifModule>
+</FilesMatch>
+
+<FilesMatch "\.(css)$">
+  <ifModule mod_headers.c>
+    Header set Content-Type "text/css"
+  </ifModule>
+</FilesMatch>
+
+# Cache control header
+Header set Cache-Control "max-age=86400, public"
+
 RewriteEngine On
 
 # Remove www.
