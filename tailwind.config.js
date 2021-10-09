@@ -34,6 +34,7 @@ module.exports = {
   variants: {
     extend: {
       opacity: ['dark'],
+      scale: ['active'],
     },
   },
   plugins: [],

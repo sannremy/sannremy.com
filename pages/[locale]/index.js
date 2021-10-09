@@ -151,7 +151,7 @@ const Home = ({
         {/* Action bar */}
         <nav>
           <div className="grid grid-cols-2 gap-2 w-full">
-            <span onClick={() => toggleDarkMode()} className="place-self-end block text-sm flex items-center px-2 py-1 opacity-75 bg-gray-200 dark:bg-gray-700 hover:opacity-100 rounded-full cursor-pointer transition-opacity duration-300 ease-in-out">
+            <span onClick={() => toggleDarkMode()} className="place-self-end text-sm flex items-center px-2 py-1 opacity-75 bg-gray-200 dark:bg-gray-700 hover:opacity-100 rounded-full cursor-pointer transition-opacity duration-300 ease-in-out">
               <span className="flex-none block w-4 mr-1">
                 {!isDarkMode && (
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -171,7 +171,7 @@ const Home = ({
             <Link
               href={`/${locale === process.env.defaultLocale ? 'fr' : process.env.defaultLocale}/`}
             >
-              <a className="place-self-start block text-sm flex items-center px-2 py-1 opacity-75 bg-gray-200 dark:bg-gray-700 hover:opacity-100 rounded-full cursor-pointer transition-opacity duration-300 ease-in-out">
+              <a className="place-self-start text-sm flex items-center px-2 py-1 opacity-75 bg-gray-200 dark:bg-gray-700 hover:opacity-100 rounded-full cursor-pointer transition-opacity duration-300 ease-in-out">
                 <span className="flex-none block w-4 mr-1">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
@@ -188,13 +188,13 @@ const Home = ({
         {/* Picture + Name + Role */}
         <section>
           <div className="mt-10 flex items-center justify-center align-center flex-col">
-            <div className="shadow-xl animate__animated animate__zoomIn w-40 h-40 mx-auto rounded-full">
+            <div className="animate__animated animate__zoomIn w-40 h-40 mx-auto">
               <Link
                 href={`/${locale}/`}
               >
                 <a
                   onClick={() => replayAnimations()}
-                  className="block opacity-90 hover:opacity-100 transition-opacity duration-300 ease-in-out"
+                  className="rounded-full transition-all transform-gpu active:scale-75 shadow-xl block opacity-90 hover:opacity-100 duration-300 ease-in-out"
                 >
                   <img
                     loading="eager"
