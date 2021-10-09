@@ -8,7 +8,6 @@ Header always set X-Frame-Options SAMEORIGIN
 Header set X-XSS-Protection "1; mode=block"
 Header set X-Content-Type-Options nosniff
 Header set Referrer-Policy no-referrer
-Header set Feature-Policy "microphone 'none';camera 'none';geolocation 'none';"
 Header set Permissions-Policy "microphone=(),camera=(),geolocation=()"
 
 # Content-type header
@@ -21,6 +20,12 @@ Header set Permissions-Policy "microphone=(),camera=(),geolocation=()"
 <FilesMatch "\.(css)$">
   <ifModule mod_headers.c>
     Header set Content-Type "text/css"
+  </ifModule>
+</FilesMatch>
+
+<FilesMatch "\.(xml)$">
+  <ifModule mod_headers.c>
+    Header set Content-Type "text/xml"
   </ifModule>
 </FilesMatch>
 

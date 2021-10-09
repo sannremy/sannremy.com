@@ -139,6 +139,12 @@ const Home = ({
             "jobTitle": t('job')
           })}}
         />
+
+        <link rel="alternate" hrefLang="x-default" href={`${t('siteUrl')}/`} />
+        <link rel="alternate" hrefLang="en" href={`${t('siteUrl')}/en/`} />
+        <link rel="alternate" hrefLang="fr" href={`${t('siteUrl')}/fr/`} />
+
+        <link rel="sitemap" href="/sitemap.xml" />
       </Head>
 
       <main>
