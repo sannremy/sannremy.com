@@ -53,6 +53,7 @@ const Home = ({
   const title = t('title')
   const description = t('description')
   const siteUrl = t('siteUrlLocale')
+  const domainUrl = t('domainUrl')
 
   const descriptions = {
     'experience': (
@@ -80,14 +81,17 @@ const Home = ({
         <meta name="title" content={title} />
         <meta name="description" content={description} />
 
+        {/* Facebook Meta Tags */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content={siteUrl} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:image" content="/social.png" />
 
+        {/* Twitter Meta Tags */}
         <meta property="twitter:card" content="summary_large_image" />
         <meta property="twitter:url" content={siteUrl} />
+        <meta property="twitter:domain" content={domainUrl} />
         <meta property="twitter:title" content={title} />
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content="/social.png" />

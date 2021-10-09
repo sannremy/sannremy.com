@@ -1,13 +1,14 @@
 {
+  "domainUrl": "sannremy.com",
   "siteUrlLocale": "https://sannremy.com/fr/",
   "localeText": "Français",
   "sannremy": "Sann-Rémy Chea",
-  "title": "Sann-Rémy Chea - Ingénieur Front-end senior",
-  "description": "Sann-Rémy Chea est un Ingénieur Front-end expérimenté, basé à Paris. Il a travaillé en tant que professionel dans l'industrie du jeu vidéo depuis plus de 10 ans.",
+  "title": "Sann-Rémy Chea - Ingénieur Front-end senior - Jeux vidéo",
+  "description": "Sann-Rémy est un Ingénieur Front-end expérimenté, basé à Paris. Il a travaillé en tant que professionel dans l'industrie du jeu vidéo depuis plus de 10 ans.",
   "tagline": "Ingénieur Front-end senior",
   "experience": "10 ans d'expérience au sein d'entreprises leaders du jeu vidéo : Activision Blizzard et Ubisoft.",
   "skills": "Spécialisé en Front-End, Node.js et AWS.",
-  "location": "Situé en région de parisienne.",
+  "location": "Habite en région de parisienne.",
   "darkMode": "Sombre",
   "lightMode": "Clair"
 }

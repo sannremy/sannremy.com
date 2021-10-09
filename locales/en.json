@@ -1,13 +1,14 @@
 {
+  "domainUrl": "sannremy.com",
   "siteUrlLocale": "https://sannremy.com/",
   "localeText": "English",
   "sannremy": "Sann-Remy Chea",
-  "title": "Sann-Remy Chea - Senior Front-end Engineer",
-  "description": "Sann-Remy Chea is a seasoned Front-end Engineer, located in Paris, France. He has been working in the video games industry, as a professional, for more than 9 years.",
+  "title": "Sann-Remy Chea - Senior Front-end Engineer - Video Games",
+  "description": "Sann-Remy is a seasoned Front-end Engineer, located in Paris, France. He has been working in the gaming industry, as a professional, for more than 10 years.",
   "tagline": "Senior Front-end Engineer",
   "experience": "10 years of experience in top Video Game companies: Activision Blizzard and Ubisoft.",
   "skills": "Specialised in Front-End, Node.js and AWS.",
-  "location": "Based in Paris, France.",
+  "location": "Located in Paris, France.",
   "darkMode": "Dark",
   "lightMode": "Light"
 }
