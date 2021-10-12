@@ -96,32 +96,6 @@ const Home = ({
         <meta property="twitter:description" content={description} />
         <meta property="twitter:image" content="/social.png" />
 
-        {/* Favicons */}
-        <link rel="icon" type="image/png" href="/favicon-196.png" sizes="196x196" />
-        <link rel="icon" type="image/png" href="/favicon-192.png" sizes="192x192" />
-        <link rel="icon" type="image/png" href="/favicon-96.png" sizes="96x96" />
-        <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32" />
-        <link rel="icon" type="image/png" href="/favicon-16.png" sizes="16x16" />
-
-        {/* Apple devices */}
-        <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
-        <link rel="apple-touch-icon" sizes="167x167" href="/favicon-167.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="/favicon-114.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="/favicon-76.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="/favicon-72.png" />
-        <link rel="apple-touch-icon" sizes="60x60" href="/favicon-60.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="/favicon-57.png" />
-
-        {/* Android devices */}
-        <link rel="manifest" href="/manifest.json" />
-
-        {/* Microsoft */}
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-TileImage" content="/favicon-144.png" />
-
         {/* JSON LD */}
         <script
           type="application/ld+json"
@@ -143,8 +117,6 @@ const Home = ({
         <link rel="alternate" hrefLang="x-default" href={`${t('siteUrl')}/`} />
         <link rel="alternate" hrefLang="en" href={`${t('siteUrl')}/en/`} />
         <link rel="alternate" hrefLang="fr" href={`${t('siteUrl')}/fr/`} />
-
-        <link rel="sitemap" href="/sitemap.xml" />
       </Head>
 
       <main>

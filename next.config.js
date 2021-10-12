@@ -3,5 +3,9 @@ module.exports = {
   env: {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
+    umami: {
+      id: process.env.UMAMI_ID,
+      js: process.env.UMAMI_JS,
+    },
   },
 }
