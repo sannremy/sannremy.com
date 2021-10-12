@@ -103,7 +103,6 @@ function App({ Component, pageProps }) {
           async
           defer
           data-website-id={process.env.umami.id}
-          data-do-not-track="true"
           src={process.env.umami.js}
         />
       </Head>
