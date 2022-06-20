@@ -170,10 +170,12 @@ const Home = ({
                   className="rounded-full transition-all transform-gpu active:scale-75 shadow-xl block opacity-90 hover:opacity-100 duration-300 ease-in-out"
                 >
                   <img
-                    loading="eager"
                     className="w-full h-full rounded-full"
                     src="/sann-remy-chea.jpg"
+                    width="160"
+                    height="160"
                     alt={t('sannremy')}
+                    loading="eager"
                   />
                 </a>
               </Link>
