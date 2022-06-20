@@ -6,6 +6,7 @@ module.exports = {
     umami: {
       id: process.env.UMAMI_ID,
       js: process.env.UMAMI_JS,
+      domain: process.env.UMAMI_DOMAIN,
     },
   },
 }
