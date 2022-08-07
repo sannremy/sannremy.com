@@ -1,5 +1,8 @@
 module.exports = {
   trailingSlash: true,
+  reactStrictMode: true,
+  poweredByHeader: false,
+  swcMinify: true,
   env: {
     locales: ['en', 'fr'],
     defaultLocale: 'en',
