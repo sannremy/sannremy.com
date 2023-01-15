@@ -6,12 +6,12 @@
   "linkedinUrl": "https://www.linkedin.com/in/sannremy/",
   "localeText": "English",
   "sannremy": "Sann-Remy Chea",
-  "title": "Sann-Remy Chea - Founder of Kangurus - Video Games",
-  "description": "Sann-Remy has founded Kangurus in 2021. He has been working in the gaming industry, as a professional, for more than 12 years.",
-  "job": "Founder of Kangurus",
-  "experience": "12 years of experience in top Video Game companies: Activision Blizzard and Ubisoft.",
+  "title": "Sann-Remy Chea - Co-founder of Kangurus - Video Games, Web and Tech",
+  "description": "Sann-Remy has co-founded Kangurus in 2021. He has been working in the gaming industry, as a professional, for more than 12 years.",
+  "job": "Co-founder of Kangurus",
+  "experience": "{{years}} years of experience in top Video Game companies: Activision Blizzard and Ubisoft.",
   "skills": "Strong background in Gaming and Web technologies.",
-  "location": "I work in my garage near Paris, France.",
+  "location": "I am based in Paris, France.",
   "darkMode": "Dark",
   "lightMode": "Light"
 }

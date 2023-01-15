@@ -11,9 +11,7 @@ const Custom404 = ({
         <title>404.</title>
       </Head>
       Hmm, looks like a 404.
-      <Link href="/en/">
-        <a className="text-gray-500 underline hover:no-underline">sannremy.com</a>
-      </Link>
+      <Link href="/en/" className="text-gray-500 underline hover:no-underline">sannremy.com</Link>
     </div>
   )
 }
