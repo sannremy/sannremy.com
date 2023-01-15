@@ -1,0 +1,36 @@
+name: Continuous Deployment
+
+on:
+  push:
+    branches:
+      - disabled_for_now
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: 18
+      FTP_FOLDER_PATH: /www/
+      LOCAL_BUILD_PATH: out/
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+      - name: Setup FTP (lftp)
+        run: |
+          sudo apt-get install -y lftp
+      - name: Build static files
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+      - name: Copy files on FTP
+        run: |
+          lftp -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_HOST }} << EOF
+          mirror -R -e ${{ env.LOCAL_BUILD_PATH }} ${{ env.FTP_FOLDER_PATH }}
+          bye
+          EOF
