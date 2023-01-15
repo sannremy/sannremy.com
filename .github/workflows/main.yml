@@ -13,9 +13,9 @@ jobs:
       FTP_FOLDER_PATH: /www/
       LOCAL_BUILD_PATH: out/
 
-      UMAMI_ID: ${{ secret.UMAMI_ID }}
-      UMAMI_JS: ${{ secret.UMAMI_JS }}
-      UMAMI_DOMAIN: ${{ secret.UMAMI_DOMAIN }}
+      UMAMI_ID: ${{ secrets.UMAMI_ID }}
+      UMAMI_JS: ${{ secrets.UMAMI_JS }}
+      UMAMI_DOMAIN: ${{ secrets.UMAMI_DOMAIN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
