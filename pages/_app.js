@@ -98,13 +98,6 @@ function App({ Component, pageProps }) {
         <meta name="msapplication-TileImage" content="/favicon-144.png" />
 
         <link rel="sitemap" href="/sitemap.xml" />
-
-        <script
-          async
-          defer
-          data-website-id={process.env.umami.id}
-          src={process.env.umami.js}
-        />
       </Head>
       <Component {...pageProps} />
     </>

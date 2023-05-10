@@ -2,13 +2,13 @@ AddDefaultCharset UTF-8
 
 # Security headers
 Header always set Content-Security-Policy "upgrade-insecure-requests;"
-Header set Content-Security-Policy "default-src 'self'"
-Header set Strict-Transport-Security "max-age=31536000;includeSubDomains;"
+Header set Content-Security-Policy "default-src 'self' https://analytics.kangur.us"
+Header set Strict-Transport-Security "max-age=31536000; includeSubDomains;"
 Header always set X-Frame-Options SAMEORIGIN
 Header set X-XSS-Protection "1; mode=block"
 Header set X-Content-Type-Options nosniff
-Header set Referrer-Policy no-referrer
-Header set Permissions-Policy "microphone=(),camera=(),geolocation=()"
+Header set Referrer-Policy strict-origin-when-cross-origin
+Header set Permissions-Policy "microphone=(), camera=(), geolocation=()"
 
 # Content-type header
 <FilesMatch "\.(js)$">
